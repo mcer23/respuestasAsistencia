@@ -1,0 +1,15 @@
+[
+  {
+    "host": "http://localhost:8080",
+    "idt": 2,      
+    "nombreCliente": "Miguel Martinez",
+    "nitCliente": "95124385",
+    "monto": "16000.00",
+    "idtFact": "4",
+    "codigoSku": "818626",
+    "nombreProducto": "Nike Air Max Fusion",
+    "cantidad": "10",
+    "precioUnitario": "1600.00",
+    "total": "16000.00"
+  }
+]

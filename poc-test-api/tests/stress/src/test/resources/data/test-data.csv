@@ -1,0 +1,7 @@
+idt,nombreCliente,nitCliente,monto,idtFact,codigoSku,nombreProducto,cantidad,precioUnitario,total,end
+30,Miguel Martinez,95124385,100.00,200,818226,Nike Air Max Fusion 1,1,100.00,100.00,end
+31,Saul Cruz,95124386,100.00,201,818227,Nike Air Max Fusion 2,2,200.00,100.00,end
+32,Saira Gershon,95124387,100.00,203,818228,Nike Air Max Fusion 3,3,300.00,100.00,end
+33,Juan Humberto Ortiz,95124388,100.00,204,818229,Nike Air Max Fusion 4,4,400.00,100.00,0
+34,Laura Gutierrez,95124389,100.00,205,818230,Nike Air Max Fusion 5,5,500.00,100.00,0
+35,Laura Gutierrez,95124589,100.00,206,828230,Nike Air Max Fusion 5,5,500.00,100.00,0

@@ -1,0 +1,54 @@
+server:
+  servlet:
+    context-path: /api/v1
+  port: 8080
+
+credenciales:
+  user: sajdlsajdlkajsdlkjsadljsdjsaljdsajdksajdjsadjlsajdlksad
+  pass: 09832984324jk34j34kj3h4kj32h4k32h4kjh34kjh4kj32h4kj2h34h3242
+
+app:
+  authUri: https://app.coppel.cloud/api/sso/v1/verify
+  ignoreSession: true
+  allowedOrigins: "*"
+  allowedMethods: GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD
+  allowedHeaders: Access-Control-Allow-Origin,Access-Control-Allow-Headers,Access-Control-Allow-Methods,Accept,Authorization,Content-Type,Method,Origin,X-Forwarded-For,X-Real-IP
+  exposedHeaders: X-Get-Header
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb             
+    driver-class-name: org.h2.Driver    
+    username: sa                        
+    password:                           
+    tomcat:
+      connection-properties: useUnicode=true;characterEncoding=utf-8;
+    hikari:
+      minimumIdle: 2
+      maximumPoolSize: 4
+      idleTimeout: 15000
+      poolName: SpringBootJPAHikariCP
+      maxLifetime: 1800000
+      connectionTimeout: 30000
+  sql:
+    init:
+      encoding: UTF-8
+      mode: always 
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect  
+    hibernate:
+      ddl-auto: update
+  h2:               
+    console:        
+      enabled: true 
+
+management:
+  server:
+    port: 8080
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: never

@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: poc-test-api
+data:
+  application.properties: |-
+    server:
+      servlet:
+        context-path: /api/v1
+      port: 8080
+
+    app:
+      authUri: https://app.coppel.cloud/api/sso/v1/verify
+      ignoreSession: true
+
+    spring:
+      datasource:
+        url: jdbc:h2:mem:testdb             
+        driver-class-name: org.h2.Driver    
+        username: sa                        
+        password:                           
+        tomcat:
+          connection-properties: useUnicode=true;characterEncoding=utf-8;
+        hikari:
+          minimumIdle: 2
+          maximumPoolSize: 4
+          idleTimeout: 15000
+          poolName: SpringBootJPAHikariCP
+          maxLifetime: 1800000
+          connectionTimeout: 30000
+      sql:
+        init:
+          encoding: UTF-8
+          mode: always 
+      jpa:
+        database-platform: org.hibernate.dialect.H2Dialect  
+        hibernate:
+          ddl-auto: update
+      h2:               
+        console:        
+          enabled: true 
+
+    management:
+      server:
+        port: 8080
+      endpoints:
+        web:
+          exposure:
+            include: health,info
+      endpoint:
+        health:
+          show-details: never

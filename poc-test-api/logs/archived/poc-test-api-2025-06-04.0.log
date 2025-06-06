@@ -1,0 +1,51 @@
+[INFO ] 2025-06-04 17:49:14.530 [background-preinit] o.h.v.i.u.Version - HV000001: Hibernate Validator 8.0.2.Final
+[INFO ] 2025-06-04 17:49:14.656 [main] c.c.MainApplication - Starting MainApplication using Java 21.0.7 with PID 86130 (/Users/mcer23/Documents/angular/convencion2/poc-test-api/target/classes started by mcer23 in /Users/mcer23/Documents/angular/convencion2/poc-test-api)
+[DEBUG] 2025-06-04 17:49:14.657 [main] c.c.MainApplication - Running with Spring Boot v3.4.5, Spring v6.2.6
+[INFO ] 2025-06-04 17:49:14.657 [main] c.c.MainApplication - No active profile set, falling back to 1 default profile: "default"
+[INFO ] 2025-06-04 17:49:15.633 [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[INFO ] 2025-06-04 17:49:15.685 [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 44 ms. Found 2 JPA repository interfaces.
+[INFO ] 2025-06-04 17:49:16.359 [main] o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8080 (http)
+[INFO ] 2025-06-04 17:49:16.372 [main] o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2025-06-04 17:49:16.374 [main] o.a.c.c.StandardService - Starting service [Tomcat]
+[INFO ] 2025-06-04 17:49:16.374 [main] o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.40]
+[INFO ] 2025-06-04 17:49:16.442 [main] o.a.c.c.C.[.[.[/api/v1] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2025-06-04 17:49:16.444 [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1741 ms
+[INFO ] 2025-06-04 17:49:16.795 [main] c.z.h.HikariDataSource - SpringBootJPAHikariCP - Starting...
+[INFO ] 2025-06-04 17:49:17.127 [main] c.z.h.p.HikariPool - SpringBootJPAHikariCP - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+[INFO ] 2025-06-04 17:49:17.131 [main] c.z.h.HikariDataSource - SpringBootJPAHikariCP - Start completed.
+[INFO ] 2025-06-04 17:49:17.274 [main] o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[INFO ] 2025-06-04 17:49:17.323 [main] o.h.Version - HHH000412: Hibernate ORM core version 6.1.7.Final
+[INFO ] 2025-06-04 17:49:17.630 [main] SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+[INFO ] 2025-06-04 17:49:18.329 [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2025-06-04 17:49:18.335 [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[WARN ] 2025-06-04 17:49:18.813 [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[INFO ] 2025-06-04 17:49:19.738 [main] o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+[INFO ] 2025-06-04 17:49:19.775 [main] o.s.b.a.e.w.EndpointLinksResolver - Exposing 2 endpoints beneath base path '/actuator'
+[INFO ] 2025-06-04 17:49:19.869 [main] o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2025-06-04 17:49:19.887 [main] o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/api/v1'
+[INFO ] 2025-06-04 17:49:19.908 [main] c.c.MainApplication - Started MainApplication in 5.691 seconds (process running for 6.563)
+[INFO ] 2025-06-04 17:49:20.380 [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[.[.[/api/v1] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 2025-06-04 17:49:20.380 [RMI TCP Connection(2)-127.0.0.1] o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 2025-06-04 17:49:20.381 [RMI TCP Connection(2)-127.0.0.1] o.s.w.s.DispatcherServlet - Completed initialization in 1 ms
+[WARN ] 2025-06-04 18:59:45.394 [SpringBootJPAHikariCP housekeeper] c.z.h.p.HikariPool - SpringBootJPAHikariCP - Thread starvation or clock leap detected (housekeeper delta=10m57s738ms).
+[WARN ] 2025-06-04 19:16:32.704 [SpringBootJPAHikariCP housekeeper] c.z.h.p.HikariPool - SpringBootJPAHikariCP - Thread starvation or clock leap detected (housekeeper delta=16m17s219ms).
+[WARN ] 2025-06-04 19:17:49.953 [SpringBootJPAHikariCP housekeeper] c.z.h.p.HikariPool - SpringBootJPAHikariCP - Thread starvation or clock leap detected (housekeeper delta=1m17s258ms).
+[WARN ] 2025-06-04 19:34:07.698 [SpringBootJPAHikariCP housekeeper] c.z.h.p.HikariPool - SpringBootJPAHikariCP - Thread starvation or clock leap detected (housekeeper delta=16m17s745ms).
+[WARN ] 2025-06-04 19:35:25.291 [SpringBootJPAHikariCP housekeeper] c.z.h.p.HikariPool - SpringBootJPAHikariCP - Thread starvation or clock leap detected (housekeeper delta=1m17s592ms).
+[WARN ] 2025-06-04 19:51:18.840 [SpringBootJPAHikariCP housekeeper] c.z.h.p.HikariPool - SpringBootJPAHikariCP - Thread starvation or clock leap detected (housekeeper delta=15m53s538ms).
+[WARN ] 2025-06-04 19:52:59.702 [SpringBootJPAHikariCP housekeeper] c.z.h.p.HikariPool - SpringBootJPAHikariCP - Thread starvation or clock leap detected (housekeeper delta=1m40s874ms).
+[WARN ] 2025-06-04 20:08:53.223 [SpringBootJPAHikariCP housekeeper] c.z.h.p.HikariPool - SpringBootJPAHikariCP - Thread starvation or clock leap detected (housekeeper delta=15m53s521ms).
+[WARN ] 2025-06-04 20:10:34.052 [SpringBootJPAHikariCP housekeeper] c.z.h.p.HikariPool - SpringBootJPAHikariCP - Thread starvation or clock leap detected (housekeeper delta=1m40s829ms).
+[WARN ] 2025-06-04 20:11:27.923 [SpringBootJPAHikariCP housekeeper] c.z.h.p.HikariPool - SpringBootJPAHikariCP - Thread starvation or clock leap detected (housekeeper delta=53s871ms).
+[WARN ] 2025-06-04 20:28:08.669 [SpringBootJPAHikariCP housekeeper] c.z.h.p.HikariPool - SpringBootJPAHikariCP - Thread starvation or clock leap detected (housekeeper delta=16m40s746ms).
+[WARN ] 2025-06-04 20:29:02.288 [SpringBootJPAHikariCP housekeeper] c.z.h.p.HikariPool - SpringBootJPAHikariCP - Thread starvation or clock leap detected (housekeeper delta=53s611ms).
+[WARN ] 2025-06-04 20:45:43.068 [SpringBootJPAHikariCP housekeeper] c.z.h.p.HikariPool - SpringBootJPAHikariCP - Thread starvation or clock leap detected (housekeeper delta=16m40s788ms).
+[WARN ] 2025-06-04 20:46:36.677 [SpringBootJPAHikariCP housekeeper] c.z.h.p.HikariPool - SpringBootJPAHikariCP - Thread starvation or clock leap detected (housekeeper delta=53s608ms).
+[WARN ] 2025-06-04 21:05:48.602 [SpringBootJPAHikariCP housekeeper] c.z.h.p.HikariPool - SpringBootJPAHikariCP - Thread starvation or clock leap detected (housekeeper delta=19m11s926ms).
+[WARN ] 2025-06-04 21:07:06.193 [SpringBootJPAHikariCP housekeeper] c.z.h.p.HikariPool - SpringBootJPAHikariCP - Thread starvation or clock leap detected (housekeeper delta=1m17s588ms).
+[WARN ] 2025-06-04 21:08:47.038 [SpringBootJPAHikariCP housekeeper] c.z.h.p.HikariPool - SpringBootJPAHikariCP - Thread starvation or clock leap detected (housekeeper delta=1m40s848ms).
+[WARN ] 2025-06-04 22:32:45.707 [SpringBootJPAHikariCP housekeeper] c.z.h.p.HikariPool - SpringBootJPAHikariCP - Thread starvation or clock leap detected (housekeeper delta=1h23m28s660ms).
+[WARN ] 2025-06-04 22:34:02.898 [SpringBootJPAHikariCP housekeeper] c.z.h.p.HikariPool - SpringBootJPAHikariCP - Thread starvation or clock leap detected (housekeeper delta=1m17s192ms).
+[WARN ] 2025-06-04 23:33:25.676 [SpringBootJPAHikariCP housekeeper] c.z.h.p.HikariPool - SpringBootJPAHikariCP - Thread starvation or clock leap detected (housekeeper delta=59m22s778ms).
+[WARN ] 2025-06-04 23:34:19.276 [SpringBootJPAHikariCP housekeeper] c.z.h.p.HikariPool - SpringBootJPAHikariCP - Thread starvation or clock leap detected (housekeeper delta=53s600ms).
+[WARN ] 2025-06-04 23:50:59.903 [SpringBootJPAHikariCP housekeeper] c.z.h.p.HikariPool - SpringBootJPAHikariCP - Thread starvation or clock leap detected (housekeeper delta=16m40s627ms).

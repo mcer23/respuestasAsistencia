@@ -1,0 +1,12 @@
+{
+    "name": "postman",
+    "version": "1.0.0",
+    "description": "postmantestapi",
+    "scripts": {
+      "test-dev": "newman run test-collection.json -d test-data-dev.json -r junit,cli --reporter-junit-export result-functional-tests.xml",
+      "test-qa": "newman run test-collection.json -d test-data-qa.json -r junit,cli --reporter-junit-export result-functional-tests.xml"
+    },
+    "devDependencies": {
+      "newman": "^4.5.1"
+    }
+  }

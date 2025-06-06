@@ -1,0 +1,627 @@
+{
+	"info": {
+		"_postman_id": "8452a08f-0800-4299-b40e-e97809d6bd64",
+		"name": "test-collecction",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3532896"
+	},
+	"item": [
+		{
+			"name": "getFacturas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"El código de estatus es: 200\", () => {",
+							"  pm.expect(pm.response.code).to.eql(200);",
+							"});",
+							"",
+							"pm.test(\"Respondio en menos de 5000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(5000);",
+							"});",
+							"",
+							"pm.test(\"El objeto de respuesta tiene las propiedades 'meta' y 'data'\", function () {",
+							"    pm.expect(pm.response.json()).to.have.property('meta');",
+							"    pm.expect(pm.response.json()).to.have.property('data');",
+							"});",
+							"",
+							"pm.test(\"Cada elemento en 'data' tiene las propiedades 'idt', 'nombreCliente', 'nitCliente', 'monto' y 'facturaDetalleList'\", function () {",
+							"    pm.response.json().data.forEach(function(item) {",
+							"        pm.expect(item).to.have.property('idt');",
+							"        pm.expect(item).to.have.property('nombreCliente');",
+							"        pm.expect(item).to.have.property('nitCliente');",
+							"        pm.expect(item).to.have.property('monto');",
+							"        pm.expect(item).to.have.property('facturaDetalleList');",
+							"    });",
+							"});",
+							"",
+							"pm.test(\"Cada elemento en 'facturaDetalleList' tiene las propiedades 'idt', 'codigoSku', 'nombreProducto', 'cantidad', 'precioUnitario' y 'total'\", function () {",
+							"    pm.response.json().data.forEach(function(item) {",
+							"        item.facturaDetalleList.forEach(function(detalle) {",
+							"            pm.expect(detalle).to.have.property('idt');",
+							"            pm.expect(detalle).to.have.property('codigoSku');",
+							"            pm.expect(detalle).to.have.property('nombreProducto');",
+							"            pm.expect(detalle).to.have.property('cantidad');",
+							"            pm.expect(detalle).to.have.property('precioUnitario');",
+							"            pm.expect(detalle).to.have.property('total');",
+							"        });",
+							"    });",
+							"});",
+							"",
+							"pm.test(\"Schema validation\", () => {",
+							"    var schema = {",
+							"        \"$schema\": \"http://json-schema.org/draft-07/schema#\",",
+							"        \"type\": \"object\",",
+							"        \"required\": [\"meta\", \"data\"],",
+							"        \"properties\": {",
+							"            \"meta\": {",
+							"                \"type\": \"object\",",
+							"                \"required\": [\"transactionID\", \"status\", \"statusCode\", \"timestamp\"]",
+							"            },",
+							"            \"data\": {",
+							"                \"type\": \"array\",",
+							"                \"items\": {",
+							"                    \"type\": \"object\",",
+							"                    \"required\": [\"idt\", \"nombreCliente\", \"nitCliente\", \"monto\", \"facturaDetalleList\"],",
+							"                    \"properties\": {",
+							"                        \"facturaDetalleList\": {",
+							"                            \"type\": \"array\",",
+							"                            \"items\": {",
+							"                                \"type\": \"object\",",
+							"                                \"required\": [\"idt\", \"codigoSku\", \"nombreProducto\", \"cantidad\", \"precioUnitario\", \"total\"]",
+							"                            }",
+							"                        }",
+							"                    }",
+							"                }",
+							"            }",
+							"        }",
+							"    };",
+							"    pm.expect(pm.response.json()).to.have.jsonSchema(schema);",
+							"});",
+							"",
+							"pm.test(\"Response data has valid schema\", function () {",
+							"  var schema = {",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema#\",",
+							"    \"type\": \"object\",",
+							"    \"required\": [\"meta\", \"data\"],",
+							"    \"properties\": {",
+							"        \"meta\": {",
+							"            \"type\": \"object\",",
+							"            \"required\": [\"transactionID\", \"status\", \"statusCode\", \"timestamp\"]",
+							"        },",
+							"        \"data\": {",
+							"            \"type\": \"array\",",
+							"            \"items\": {",
+							"                \"type\": \"object\",",
+							"                \"required\": [\"idt\", \"nombreCliente\", \"nitCliente\", \"monto\", \"facturaDetalleList\"],",
+							"                \"properties\": {",
+							"                    \"facturaDetalleList\": {",
+							"                        \"type\": \"array\",",
+							"                        \"items\": {",
+							"                            \"type\": \"object\",",
+							"                            \"required\": [\"idt\", \"codigoSku\", \"nombreProducto\", \"cantidad\", \"precioUnitario\", \"total\"]",
+							"                        }",
+							"                    }",
+							"                }",
+							"            }",
+							"        }",
+							"    }",
+							"  };",
+							"  pm.expect(pm.response.json()).to.have.jsonSchema(schema);",
+							"});",
+							"",
+							"var responseData = JSON.parse(responseBody);",
+							"tests[\"salida: \" + responseBody] = true"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/v1/facturas",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"facturas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getFacturas_404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"El código de estatus es: 404\", () => {",
+							"  pm.expect(pm.response.code).to.eql(404);",
+							"});",
+							"",
+							"pm.test(\"Respondio en menos de 5000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(5000);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/v1/factura",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"factura"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getFactura",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"El código de estatus es: 200\", () => {",
+							"  pm.expect(pm.response.code).to.eql(200);",
+							"});",
+							"",
+							"pm.test(\"Respondio en menos de 5000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(5000);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/v1/facturas/{{idt}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"facturas",
+						"{{idt}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getFactura_404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"El código de estatus es: 404\", () => {",
+							"  pm.expect(pm.response.code).to.eql(404);",
+							"});",
+							"",
+							"pm.test(\"Respondio en menos de 5000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(5000);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/v1/factura/{{idt}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"factura",
+						"{{idt}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateFactura",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"El código de estatus es: 200\", () => {",
+							"  pm.expect(pm.response.code).to.eql(200);",
+							"});",
+							"",
+							"pm.test(\"Respondio en menos de 5000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(5000);",
+							"});",
+							"",
+							"pm.test(\"Schema is valid\", function () {",
+							"    var schema = {",
+							"        type: \"object\",",
+							"        properties: {",
+							"            meta: {",
+							"                type: \"object\",",
+							"                properties: {",
+							"                    transactionID: { type: \"string\" },",
+							"                    status: { type: \"string\" },",
+							"                    statusCode: { type: \"number\" },",
+							"                    timestamp: { type: \"string\" }",
+							"                },",
+							"                required: [\"transactionID\", \"status\", \"statusCode\", \"timestamp\"]",
+							"            },",
+							"            data: {",
+							"                type: \"object\",",
+							"                properties: {",
+							"                    idt: { type: \"number\" },",
+							"                    nombreCliente: { type: \"string\" },",
+							"                    nitCliente: { type: \"string\" },",
+							"                    monto: { type: \"number\" },",
+							"                    facturaDetalleList: {",
+							"                        type: \"array\",",
+							"                        items: {",
+							"                            type: \"object\",",
+							"                            properties: {",
+							"                                idt: { type: \"number\" },",
+							"                                codigoSku: { type: \"string\" },",
+							"                                nombreProducto: { type: \"string\" },",
+							"                                cantidad: { type: \"number\" },",
+							"                                precioUnitario: { type: \"number\" },",
+							"                                total: { type: \"number\" }",
+							"                            },",
+							"                            required: [\"idt\", \"codigoSku\", \"nombreProducto\", \"cantidad\", \"precioUnitario\", \"total\"]",
+							"                        }",
+							"                    }",
+							"                },",
+							"                required: [\"idt\", \"nombreCliente\", \"nitCliente\", \"monto\", \"facturaDetalleList\"]",
+							"            }",
+							"        },",
+							"        required: [\"meta\", \"data\"]",
+							"    };",
+							"",
+							"    var response = pm.response.json();",
+							"    pm.expect(tv4.validate(response, schema)).to.be.true;",
+							"});",
+							"",
+							"var responseData = JSON.parse(responseBody);",
+							"tests[\"salida: \" + responseBody] = true"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"idt\": {{idt}},\n    \"nombreCliente\": \"{{nombreCliente}}\",\n    \"nitCliente\": \"{{nitCliente}}\",\n    \"monto\": {{monto}},\n    \"facturaDetalleList\": [\n        {\n            \"idt\": {{idtFact}},\n            \"codigoSku\": \"{{codigoSku}}\",\n            \"nombreProducto\": \"{{nombreProducto}}\",\n            \"cantidad\": {{cantidad}},\n            \"precioUnitario\": {{precioUnitario}},\n            \"total\": {{total}},\n            \"idtFactura\": {\n                \"idt\": {{idtFact}}\n            }\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/v1/facturas/{{idt}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"facturas",
+						"{{idt}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateFactura_404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"El código de estatus es: 404\", () => {",
+							"  pm.expect(pm.response.code).to.eql(404);",
+							"});",
+							"",
+							"pm.test(\"Respondio en menos de 5000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(5000);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"idt\": {{idt}},\n    \"nombreCliente\": \"{{clientName}}\",\n    \"nitCliente\": \"{{nitClient}}\",\n    \"monto\": {{amount}},\n    \"facturaDetalleList\": [\n        {\n            \"idt\": {{idtBill}},\n            \"codigoSku\": \"{{skuCode}}\",\n            \"nombreProducto\": \"{{productName}}\",\n            \"cantidad\": {{count}},\n            \"precioUnitario\": {{unitPrice}},\n            \"total\": {{total}}\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/v1/factura/{{idt}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"factura",
+						"{{idt}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registerFactura",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var idt = pm.response.json().data.idt;",
+							"pm.environment.set(\"idt\", idt);",
+							"",
+							"pm.test(\"El código de estatus es: 200\", () => {",
+							"  pm.expect(pm.response.code).to.eql(200);",
+							"});",
+							"",
+							"pm.test(\"Respondio en menos de 5000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(5000);",
+							"});",
+							"",
+							"pm.test(\"La estrucctura de la respuesta es valida\", function () {",
+							"    var responseJSON = pm.response.json();",
+							"    pm.expect(responseJSON).to.have.property('meta');",
+							"    pm.expect(responseJSON).to.have.property('data');",
+							"",
+							"    var facturaDetalleList = responseJSON.data.facturaDetalleList;",
+							"    facturaDetalleList.forEach((detalle) => {",
+							"        pm.expect(detalle).to.have.property('idt');",
+							"        pm.expect(detalle).to.have.property('codigoSku');",
+							"        pm.expect(detalle).to.have.property('nombreProducto');",
+							"        pm.expect(detalle).to.have.property('cantidad');",
+							"        pm.expect(detalle).to.have.property('precioUnitario');",
+							"        pm.expect(detalle).to.have.property('total');",
+							"    });",
+							"});",
+							"",
+							"pm.test(\"La respuesta es valida\", function () {",
+							"    var schema = {",
+							"        type: \"object\",",
+							"        properties: {",
+							"            meta: {",
+							"                type: \"object\",",
+							"                properties: {",
+							"                    transactionID: { type: \"string\" },",
+							"                    status: { type: \"string\" },",
+							"                    statusCode: { type: \"number\" },",
+							"                    timestamp: { type: \"string\" }",
+							"                },",
+							"                required: [\"transactionID\", \"status\", \"statusCode\", \"timestamp\"]",
+							"            },",
+							"            data: {",
+							"                type: \"object\",",
+							"                properties: {",
+							"                    idt: { type: \"number\" },",
+							"                    nombreCliente: { type: \"string\" },",
+							"                    nitCliente: { type: \"string\" },",
+							"                    monto: { type: \"number\" },",
+							"                    facturaDetalleList: {",
+							"                        type: \"array\",",
+							"                        items: {",
+							"                            type: \"object\",",
+							"                            properties: {",
+							"                                idt: { type: \"number\" },",
+							"                                codigoSku: { type: \"string\" },",
+							"                                nombreProducto: { type: \"string\" },",
+							"                                cantidad: { type: \"number\" },",
+							"                                precioUnitario: { type: \"number\" },",
+							"                                total: { type: \"number\" }",
+							"                            },",
+							"                            required: [\"idt\", \"codigoSku\", \"nombreProducto\", \"cantidad\", \"precioUnitario\", \"total\"]",
+							"                        }",
+							"                    }",
+							"                },",
+							"                required: [\"idt\", \"nombreCliente\", \"nitCliente\", \"monto\", \"facturaDetalleList\"]",
+							"            }",
+							"        },",
+							"        required: [\"meta\", \"data\"]",
+							"    };",
+							"",
+							"    var response = pm.response.json();",
+							"    pm.expect(tv4.validate(response, schema)).to.be.true;",
+							"});",
+							"",
+							"var responseData = JSON.parse(responseBody);",
+							"tests[\"salida: \" + responseBody] = true",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"idt\": {{idt}},\n    \"nombreCliente\": \"{{nombreCliente}}\",\n    \"nitCliente\": \"{{nitCliente}}\",\n    \"monto\": {{monto}},\n    \"facturaDetalleList\": [\n        {\n            \"idt\": {{idtFact}},\n            \"codigoSku\": \"{{codigoSku}}\",\n            \"nombreProducto\": \"{{nombreProducto}}\",\n            \"cantidad\": {{cantidad}},\n            \"precioUnitario\": {{precioUnitario}},\n            \"total\": {{total}},\n            \"idtFactura\": {\n                \"idt\": {{idtFact}}\n            }\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/v1/facturas",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"facturas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registerFactura_404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"El código de estatus es: 404\", () => {",
+							"  pm.expect(pm.response.code).to.eql(404);",
+							"});",
+							"",
+							"pm.test(\"Respondio en menos de 5000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(5000);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"idt\": {{idt}},\n    \"nombreCliente\": \"{{clientName}}\",\n    \"nitCliente\": \"{{nitClient}}\",\n    \"monto\": {{amount}},\n    \"facturaDetalleList\": [\n        {\n            \"idt\": {{idtBill}},\n            \"codigoSku\": \"{{skuCode}}\",\n            \"nombreProducto\": \"{{productName}}\",\n            \"cantidad\": {{count}},\n            \"precioUnitario\": {{unitPrice}},\n            \"total\": {{total}}\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/v1/factura",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"factura"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteFactura",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"El código de estatus es: 200\", () => {",
+							"  pm.expect(pm.response.code).to.eql(200);",
+							"});",
+							"",
+							"pm.test(\"Respondio en menos de 5000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(5000);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/v1/facturas/{{idt}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"facturas",
+						"{{idt}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteFactura_404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"El código de estatus es: 404\", () => {",
+							"  pm.expect(pm.response.code).to.eql(404);",
+							"});",
+							"",
+							"pm.test(\"Respondio en menos de 5000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(5000);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/v1/factura/{{idt}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"factura",
+						"{{idt}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

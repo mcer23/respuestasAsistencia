@@ -1,0 +1,52 @@
+{
+  "groups": [
+    {
+      "name": "app",
+      "type": "com.coppel.config.AppConfig",
+      "sourceType": "com.coppel.config.AppConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "app.allowed-headers",
+      "type": "java.lang.String",
+      "sourceType": "com.coppel.config.AppConfig"
+    },
+    {
+      "name": "app.allowed-methods",
+      "type": "java.lang.String",
+      "sourceType": "com.coppel.config.AppConfig"
+    },
+    {
+      "name": "app.allowed-origins",
+      "type": "java.lang.String",
+      "sourceType": "com.coppel.config.AppConfig"
+    },
+    {
+      "name": "app.auth-uri",
+      "type": "java.lang.String",
+      "sourceType": "com.coppel.config.AppConfig"
+    },
+    {
+      "name": "app.build-properties",
+      "type": "org.springframework.boot.info.BuildProperties",
+      "sourceType": "com.coppel.config.AppConfig"
+    },
+    {
+      "name": "app.context-version",
+      "type": "java.lang.String",
+      "sourceType": "com.coppel.config.AppConfig"
+    },
+    {
+      "name": "app.exposed-headers",
+      "type": "java.lang.String",
+      "sourceType": "com.coppel.config.AppConfig"
+    },
+    {
+      "name": "app.ignore-session",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.coppel.config.AppConfig"
+    }
+  ],
+  "hints": []
+}
