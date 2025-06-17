@@ -18,6 +18,7 @@ import com.coppel.dto.RespuestasDTO;
 
 public class RespuestasSQL implements ImplRespuestasSQL{
 
+
     @Autowired
     @Qualifier("sqlServerConvencion")
     private JdbcTemplate jbcSqlServerCon;
@@ -48,7 +49,7 @@ public class RespuestasSQL implements ImplRespuestasSQL{
         }
     }
     @Override
-    public void ctlRespuestas (Integer numEmpleado){
+    public void ctlRespuestas (String numEmpleado){
         if (checkAuthorization("authorization")){
             String consulta = "PROC_INSERT_LOG_CONVENCION ?,?";
             this.jbcSqlServerCon.update(consulta);

@@ -1,5 +1,6 @@
 package com.coppel.consultaSQL.impl;
 
-public class ImplRespuestasSQL {
-    Object ConsultarLista(String numEmpleado, String nombreCompleto, Boolean invitadoAsiste);
+public interface ImplRespuestasSQL {
+    public Object ImplRespuestasSQL(String numEmpleado, String nombreCompleto, Boolean invitadoAsiste);
+
 }
