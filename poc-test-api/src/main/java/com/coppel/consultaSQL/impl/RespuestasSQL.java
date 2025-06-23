@@ -19,7 +19,7 @@ import com.coppel.dto.RespuestasDTO;
 @Component
 public class RespuestasSQL implements ImplRespuestasSQL{
     @Autowired
-    @Qualifier("jdbcSqlServer") // Este nombre debe coincidir con el del Bean
+    @Qualifier("sqlServerRes") // Este nombre debe coincidir con el del Bean
     private JdbcTemplate jdbcSqlServer;
 
     private static Logger log = LoggerFactory.getLogger(RespuestasSQL.class);

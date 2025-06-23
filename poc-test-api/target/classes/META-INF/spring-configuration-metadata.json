@@ -4,18 +4,6 @@
       "name": "app",
       "type": "com.coppel.config.AppConfig",
       "sourceType": "com.coppel.config.AppConfig"
-    },
-    {
-      "name": "sqlserver.asistenciaconvencion",
-      "type": "javax.sql.DataSource",
-      "sourceType": "com.coppel.config.sql_server.SqlServerConfig",
-      "sourceMethod": "public javax.sql.DataSource sqlServerAsistenciaConvencionDataSource() "
-    },
-    {
-      "name": "sqlserver.per",
-      "type": "javax.sql.DataSource",
-      "sourceType": "com.coppel.config.sql_server.SqlServerConfig",
-      "sourceMethod": "public javax.sql.DataSource sqlServerPerDataSource() "
     }
   ],
   "properties": [

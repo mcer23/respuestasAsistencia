@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
-
+import com.coppel.consultaSQL.ImplRespuestasSQL;
 import com.coppel.dto.RespuestasDTO;
 import com.coppel.models.RespuestasAsistencia;
 import com.coppel.repositories.RespuestasRepository;
@@ -20,14 +20,15 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 @Service
-public class ImplRespuestas<ImplRespuestasSQL> implements RespuestasService{
+@PropertySource("classpath:application.yaml")
+public class ImplRespuestas implements RespuestasService{
     @Autowired
     private ImplRespuestasSQL implRespuestasSQL;
-
     
     @Override
     public Object consultarLista(String numEmpleado, String nombreCompleto, Boolean invitadoAsiste){
-      return null;  
+      return this.implRespuestasSQL.obtenerRespuestas(numEmpleado,nombreCompleto,invitadoAsiste);
+      
     }
 
     

@@ -23,9 +23,11 @@ public class RespuestasController {
 
     @Autowired /* proporciona al controlador el UserService necesario.*/
     private RespuestasRepository RespuestasRepository;
-    private static final String MESSAGE_BAD_REQUEST = "La información que envió no tiene el formato correcto.";
-    private final Meta meta = new Meta(UUID.randomUUID().toString(), "OK", 200);
+    // private static final String MESSAGE_BAD_REQUEST = "La información que envió no tiene el formato correcto.";
+    // private final Meta meta = new Meta(UUID.randomUUID().toString(), "OK", 200);
 
+    @Autowired
+    RespuestasService respuestasService;
     /*private boolean mostrarRespuestas(RespuestasDTO respuestasDTO) {
         boolean mostrar = true;
         if (respuestasDTO == null) {
@@ -47,8 +49,10 @@ public class RespuestasController {
     /*public List<RespuestasAsistencia> obtenerRespuestas(){
         return RespuestasRepository.findAll();
     }*/
-    public RespuestasDTO obtenerRespuestas(){
-        return new RespuestasDTO();
+    public Object obtenerRespuestas(){
+        String numemp = "90275398";
+        String nombrecompleto = "Axel";
+        return this.respuestasService.consultarLista(numemp, nombrecompleto, true);
     }
 
 
