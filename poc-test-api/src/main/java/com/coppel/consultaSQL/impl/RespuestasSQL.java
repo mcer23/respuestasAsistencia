@@ -56,11 +56,7 @@ public class RespuestasSQL implements ImplRespuestasSQL{
         return userName.equals("authorization");
     }
 
-    @Override
-    public Object obtenerRespuestas(String numEmpleado, String nombreCompleto, Boolean invitadoAsiste) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'ImplRespuestasSQL'");
-    }
+    
 
 
 }
