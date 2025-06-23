@@ -2,6 +2,7 @@ package com.coppel.config.sql_server;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -73,30 +74,45 @@ public class SqlServerConfig {
         return new JdbcTemplate(dataSource);
     }
 
-    // @Value("${IPsPersonal-Admin}")
-    // private String ipFon;
-    // @Value("${DBPersonal-Admin}")
-    // private String dbFon;
-    // @Value("${USERPersonal-Admin}")
-    // private String userFon;
-    // @Value("${PASSPersonal-Admin}")
-    // private String psswFon;
+    //sustitur la info
+    @Bean(name = "mysqlAsistenciaConvencion")
+    public DataSource mysqlDataSource() {
+        return DataSourceBuilder.create()
+                .url("jdbc:sqlserver://34.136.188.162;databaseName=asistenciaConvencion;encrypt=true;trustServerCertificate=true")
+                .username("demospri")
+                .password("demo1234")
+                .driverClassName("com.mysql.cj.jdbc.Driver")
+                .build();
+    }
 
-    // @Bean(name = "sqlServerPerDataSource")
-    // @Primary
-    // public DataSource sqlServerPerDataSource() {
-    //     return DataSourceBuilder.create()
-    //             .url("jdbc:sqlserver://" + ipFon + ":1433;databaseName=" + dbFon + ";encrypt=true;trustServerCertificate=true")
-    //             .username(userFon)
-    //             .password(psswFon)
-    //             .driverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver")
-    //             .build();
-    // }
+    @Bean(name = "jdbcSqlServer")
+    public JdbcTemplate jdbcTemplate(DataSource mysqlDataSource) {
+        return new JdbcTemplate(mysqlDataSource);
+    }
 
-    // @Bean
-    // public JdbcTemplate sqlServerPer(@Qualifier("sqlServerPerDataSource") DataSource dataSource) {
-    //     return new JdbcTemplate(dataSource);
-    // }
+    @Bean(name = "sqlServerAsistenciaConvencion")
+    @ConfigurationProperties(prefix = "sqlserver.asistenciaconvencion")
+    public DataSource sqlServerAsistenciaConvencionDataSource() {
+        return DataSourceBuilder.create().build();
+    }
+
+    @Bean(name = "sqlServerRespuestas")
+    @ConfigurationProperties(prefix = "sqlserver.per")
+    public DataSource sqlServerPerDataSource() {
+        return DataSourceBuilder.create().build();
+    }
+
+    @Bean(name = "jbcSqlServerAsistencia")
+    public JdbcTemplate jbcSqlServerCon(@Qualifier("sqlServerAsistenciaConvencion") DataSource ds) {
+        return new JdbcTemplate(ds);
+    }
+
+    @Bean(name = "jdbcSqlServerRespuestas")
+    public JdbcTemplate jdbcSqlServerPer(@Qualifier("sqlServerRespuestas") DataSource ds) {
+        return new JdbcTemplate(ds);
+    }
+
+    
 
     
 }

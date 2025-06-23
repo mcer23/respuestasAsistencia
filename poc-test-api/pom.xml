@@ -160,6 +160,8 @@
             <version>${mockito.plugin.version}</version>
             <scope>test</scope>
         </dependency>
+        
+
     </dependencies>
 
     <profiles>

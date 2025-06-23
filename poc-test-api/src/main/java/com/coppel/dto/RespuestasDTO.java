@@ -33,8 +33,7 @@ import lombok.NoArgsConstructor;
      * @param alergiaAlimentaria
      * @param discapacidad
      */
-    public RespuestasDTO(Long id, String numEmpleado, String nombreCompleto, Boolean invitadoAsiste, 
-                         Boolean parejaAsiste, Boolean alergiaAlimentaria, Boolean discapacidad) {
+    public RespuestasDTO(Long id, String numEmpleado, String nombreCompleto, Boolean invitadoAsiste, Boolean parejaAsiste, Boolean alergiaAlimentaria, Boolean discapacidad) {
         this.id = id;
         this.numEmpleado = numEmpleado;
         this.nombreCompleto = nombreCompleto;
