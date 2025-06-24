@@ -1,11 +1,5 @@
 package com.coppel.dto;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Data;
@@ -22,6 +16,7 @@ import lombok.NoArgsConstructor;
     private Boolean parejaAsiste;
     private Boolean alergiaAlimentaria;
     private Boolean discapacidad;
+    private String comentarios;
 
 
     /**
@@ -32,6 +27,7 @@ import lombok.NoArgsConstructor;
      * @param parejaAsiste
      * @param alergiaAlimentaria
      * @param discapacidad
+     * @param comentarios
      */
     public RespuestasDTO(Long id, String numEmpleado, String nombreCompleto, Boolean invitadoAsiste, Boolean parejaAsiste, Boolean alergiaAlimentaria, Boolean discapacidad) {
         this.id = id;
@@ -41,6 +37,7 @@ import lombok.NoArgsConstructor;
         this.parejaAsiste = parejaAsiste;
         this.alergiaAlimentaria = alergiaAlimentaria;
         this.discapacidad = discapacidad;
+        this.comentarios = comentarios;
     }
 
     public List <RespuestasDTO> RespuestasList;

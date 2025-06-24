@@ -11,13 +11,8 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
 import com.coppel.consultaSQL.ImplRespuestasSQL;
-import com.coppel.dto.RespuestasDTO;
-import com.coppel.models.RespuestasAsistencia;
-import com.coppel.repositories.RespuestasRepository;
 import com.coppel.services.RespuestasService;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
+
 
 @Service
 @PropertySource("classpath:application.yaml")

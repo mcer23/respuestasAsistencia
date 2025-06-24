@@ -1,8 +1,6 @@
 package com.coppel.config.sql_server;
 
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,10 +34,7 @@ public class SqlServerConfig {
     // @Primary
     // public DataSource sqlServerconvencionDataSource() {
         
-    //     // System.out.println(user);
-    //     // System.out.println(ip);
-    //     // System.out.println(db);
-    //     // System.out.println(pssw);
+
     //     return DataSourceBuilder.create()
     //             .url("jdbc:sqlserver://" + ip + ":1433;databaseName=" + db + ";encrypt=true;trustServerCertificate=true")
     //             .username(user)

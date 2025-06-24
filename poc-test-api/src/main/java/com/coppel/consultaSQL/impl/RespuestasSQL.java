@@ -13,7 +13,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import com.coppel.consultaSQL.ImplRespuestasSQL;
-import com.coppel.consultaSQL.impl.*;
 import com.coppel.dto.RespuestasDTO;
 
 @Component
