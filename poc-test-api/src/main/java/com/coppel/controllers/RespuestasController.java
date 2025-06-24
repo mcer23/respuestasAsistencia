@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.coppel.dto.ApiResponseDTO;
-import com.coppel.dto.FacturasDTO;
-import com.coppel.dto.FacturasDetalleDTO;
 import com.coppel.dto.RespuestasDTO;
 import com.coppel.models.RespuestasAsistencia;
 import com.coppel.repositories.RespuestasRepository;
@@ -45,12 +43,12 @@ public class RespuestasController {
         return mostrar;
     }*/
 
-    @GetMapping("/obtener") /* enruta la solicitud al método correcto. */
+    @GetMapping("/obtener/{numemp}") /* enruta la solicitud al método correcto. */
     /*public List<RespuestasAsistencia> obtenerRespuestas(){
         return RespuestasRepository.findAll();
     }*/
-    public Object obtenerRespuestas(){
-        String numemp = "90275398";
+    public Object obtenerRespuestas(@PathVariable String numemp){
+        // String numemp = "90275398";
         String nombrecompleto = "Axel";
         return this.respuestasService.consultarLista(numemp, nombrecompleto, true);
     }

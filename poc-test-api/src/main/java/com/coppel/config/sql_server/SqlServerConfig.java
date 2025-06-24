@@ -78,7 +78,7 @@ public class SqlServerConfig {
         // System.out.println(userPer);
         // System.out.println(psswPer);
         return DataSourceBuilder.create()
-                .url("jdbc:sqlserver://51.79.72.212:1433;databaseName=asistenciaConvencion;encrypt=true;trustServerCertificate=true")
+                .url("jdbc:sqlserver://51.79.72.212:1433;databaseName=respuestasAsistencia;encrypt=true;trustServerCertificate=true")
                 .username("usuario_app")
                 .password("MiPassSegura123")
                 .driverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver")

@@ -27,13 +27,11 @@ public class RespuestasSQL implements ImplRespuestasSQL{
     public Optional<List <RespuestasDTO>> obtenerRespuestas (String numEmpleado, String nombreCompleto, Boolean invitadoAsiste) {
         try {
             if (checkAuthorization("authorization")) {
-                String consulta = "SELECT * FROM asistentes WHERE num_empleado = ? AND nombre_completo = ? AND invitado_asiste = ?";
+                String consulta = "SELECT * FROM respuestas WHERE numEmpleado = ?";
                 List<RespuestasDTO> result = jdbcSqlServer.query(
                         consulta,
                         BeanPropertyRowMapper.newInstance(RespuestasDTO.class),
-                        numEmpleado,
-                        nombreCompleto,
-                        invitadoAsiste
+                        numEmpleado
                 );
                 return Optional.ofNullable(result.isEmpty() ? null : result);
             }
