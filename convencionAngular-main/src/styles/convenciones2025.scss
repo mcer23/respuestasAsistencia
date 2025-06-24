@@ -1,0 +1,26 @@
+/***** Colors *****/
+$accept:#46BA36;
+
+/***** darkThemes *****/
+$darkBgColor:#2E2E2E;
+$darkTitle:#FDDA25;
+$darkSubtitle:#5287FB;
+$darkText:#FFF;
+$darkSubtext:#B2B2B2;
+$darkBorder:#636161;
+$darkReject:#E06666;
+
+/***** lightThemes *****/
+$lightBgColor:#EFEFEF;
+$lightTitle:#2E2E2E;
+$lightSubtitle:#3045FF;
+$lightText:#2E2E2E;
+$lightSubtext:#636161;
+$lightBorder:#FDDA25;
+$lightReject:#E43B3B;
+
+
+.p-button-primary-convencion{
+    background-color: var($darkSubtitle);
+    color: var($darkText);
+}

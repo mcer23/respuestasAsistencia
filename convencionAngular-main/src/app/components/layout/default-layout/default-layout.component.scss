@@ -1,0 +1,35 @@
+/*@import "../../../theme/theme.scss";*/
+/***** Colors *****/
+$accept:#46BA36;
+
+/***** darkThemes *****/
+$darkBgColor:#2E2E2E;
+$darkTitle:#FDDA25;
+$darkSubtitle:#5287FB;
+$darkText:#FFF;
+$darkSubtext:#B2B2B2;
+$darkBorder:#636161;
+$darkReject:#E06666;
+
+/***** lightThemes *****/
+$lightBgColor:#EFEFEF;
+$lightTitle:#2E2E2E;
+$lightSubtitle:#3045FF;
+$lightText:#2E2E2E;
+$lightSubtext:#636161;
+$lightBorder:#FDDA25;
+$lightReject:#E43B3B;
+@import url(../../../../styles/convenciones2025.scss);
+*{
+        box-sizing: border-box;
+        margin:0;
+        padding:0;
+}
+section{
+        font-size: 62.5%;
+        font-family: "Inter", serif;
+        overflow-x:hidden;
+        }
+.section--title{
+    color: var($lightText);
+}        

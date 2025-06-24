@@ -1,0 +1,98 @@
+
+/***** Colors *****/
+$accept:#46BA36;
+
+/***** darkThemes *****/
+$darkBgColor:#2E2E2E;
+$darkTitle:#FDDA25;
+$darkSubtitle:#5287FB;
+$darkText:#FFF;
+$darkSubtext:#B2B2B2;
+$darkBorder:#636161;
+$darkReject:#E06666;
+
+/***** lightThemes *****/
+$lightBgColor:#EFEFEF;
+$lightTitle:#2E2E2E;
+$lightSubtitle:#3045FF;
+$lightText:#2E2E2E;
+$lightSubtext:#636161;
+$lightBorder:#FDDA25;
+$lightReject:#E43B3B;
+
+section{
+    position: relative;
+}
+.icon--header{
+    content: url(assetsConvencion/ico/Eclipse.png);
+    position: absolute;
+    width:82px;
+    left:-40px;
+    z-index: 1;
+    overflow: hidden;
+
+}
+.icon--footer{
+    content: url(assetsConvencion/ico/asset_footer.png);
+    position: absolute;
+    overscroll-behavior-x: hidden;
+    width:140px;
+    right:-60px;
+    bottom:1px;
+    z-index: 1;
+    overflow: hidden;
+
+}
+.section--title h1, .section--title p, .section--questions ol{
+    color: $lightTitle;
+    margin-left: 13%;
+    
+}
+.section--questions li{
+    margin-bottom: 13px;
+    width:70%;
+    text-wrap: wrap;
+}
+.select--input{
+    margin-top: 8px;
+    width:90%;
+    height: auto;
+    border: 1px solid #B2B2B2;
+}
+.txtBox--input{
+    margin-top: 8px;
+    width:90%;
+    height: 50px;
+    border: 1px solid #B2B2B2;
+}
+
+.btn-enviar{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width:163px;
+    height: 33px;
+    border-radius: 23px;
+    border: none;
+    background-color: $lightSubtitle;
+    color: $darkText;
+    padding-top: 10px;
+}
+@media (min-width:1000px){
+    .icon--header{
+    width:140px;
+    left:-80px;
+}
+.icon--footer{
+    width:240px;
+    right:-80px;
+}
+.btn-enviar{
+    width:254px;
+    padding-top: 7px;
+}
+
+
+}
+
+

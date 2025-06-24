@@ -1,0 +1,109 @@
+
+/***** Colors *****/
+$accept:#46BA36;
+
+/***** darkThemes *****/
+$darkBgColor:#2E2E2E;
+$darkTitle:#FDDA25;
+$darkSubtitle:#5287FB;
+$darkText:#FFF;
+$darkSubtext:#B2B2B2;
+$darkBorder:#636161;
+$darkReject:#E06666;
+
+/***** lightThemes *****/
+$lightBgColor:#EFEFEF;
+$lightTitle:#2E2E2E;
+$lightSubtitle:#3045FF;
+$lightText:#2E2E2E;
+$lightSubtext:#636161;
+$lightBorder:#FDDA25;
+$lightReject:#E43B3B;
+section{
+    display: flex;
+    justify-content: center;
+    margin-top:165px;
+}
+.signin--styles h1, .signin--styles p{
+    color: $lightTitle;
+}
+
+.signin--styles img{
+    width:226px;
+    height: auto;
+    
+}
+.signin--btn{
+    display: flex;
+    justify-content: center;
+    margin-top:23px;
+
+}
+p-button{
+    width:249px;
+    height: 42px;
+    border-radius: 23px;
+}
+
+   
+/*:host {
+    display: flex;
+    background-color: var(--bgColor);
+    min-height: 100%;
+
+  
+
+    #login-content {
+        flex-grow: 1;
+        flex-basis: 800px;
+        flex-direction: column;
+        justify-content: space-around;
+        min-width: 400px;
+        article, footer, header {
+            padding: 24px;
+        }
+        .company-logo {
+            height: 64px;
+        }
+        .button-selector {
+            display: flex;
+            flex-direction: column;
+            > * {
+                margin-bottom: 24px;
+            }
+        }
+    }
+    #banner-content {
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+}
+section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}*/
+.signin--formSection-btns button{
+        margin-top: 20px;
+        color: var(--text);
+        background-color: var(--button);
+        }
+
+@media (max-width: 800px) {
+    :host {
+        flex-direction: column-reverse;
+    }
+}
+///////////////////////////////////////////////////////////
+
+.login-element-container{
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+}
