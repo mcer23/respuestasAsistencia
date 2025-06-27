@@ -7,48 +7,48 @@
 <div class="section--questions">
     <ol>
         <li>¿Asistirá a la Convención Nacional 2026?<br>
-            <select name="Reponder" class="select--input" required>
-                <option value="Seleccionar">Seleccionar...</option>
-                <option value="Si">Si</option>
-                <option value="No">No</option>
+            <select [(ngModel)]="confirmacion.parejaAsiste" name="invitadoAsiste" class="select--input" required>
+                <option [ngValue]="undefined">Seleccionar...</option>
+                <option [ngValue]="true">Si</option>
+                <option [ngValue]="false">No</option>
             </select>
         </li>
          <li>¿Su pareja asistirá a la Convención Nacional 2026?<br>
-                <select [(ngModel)]="parejaOpcion" name="Reponder" class="select--input"  required>
-                    <option value="Seleccionar...">Seleccionar...</option>
-                    <option value="Si">Si</option>
-                    <option value="No">No</option>
+                <select [(ngModel)]="confirmacion.parejaAsiste" name="parejaAsiste" class="select--input"  required>
+                    <option [ngValue]="undefined">Seleccionar...</option>
+                    <option [ngValue]="true">Si</option>
+                    <option [ngValue]="false">No</option>
                 </select>   
         </li>
-        @if(parejaOpcion==='Si'){
+        @if(confirmacion.parejaAsiste==='Si'){
             <p>Confirma el nombre completo de su pareja.<br>
             <input  type="text" class="txtBox--input" name="nomPareja" placeholder="Nombre(s), apellido paterno y apellido materno">
             </p> 
         }
         <li>¿Tienes alguna alergia alimentaria que debamos considerar?<br>  
-                <select [(ngModel)]="alergiaOpcion" name="Reponder" class="select--input"  required>
-                    <option value="Seleccionar...">Seleccionar...</option>
-                    <option value="Si">Si</option>
-                    <option value="No">No</option>
+                <select [(ngModel)]="confirmacion.alergiaAlimentaria" name="Reponder" class="select--input"  required>
+                    <option [ngValue]="undefined">Seleccionar...</option>
+                    <option [ngValue]="true">Si</option>
+                    <option [ngValue]="false">No</option>
                 </select>  
         </li> 
-        @if(alergiaOpcion==='Si'){
+        @if(confirmacion.alergiaAlimentaria==='Si'){
             <p>Por favor especifíque su alergia:<br>
-            <input  type="text" class="txtBox--input" name="alergias" placeholder="Soy alérgico a los mariscos.">
+            <input  type="text" class="txtBox--input" name="alergias" placeholder="Tengo alergia a los mariscos."[(ngModel)]="confirmacion.alergiaEsp">
         </p>
         } 
         <li>¿Tienes alguna necesidad especial relacionada con accesibilidad o alguna discapacidad que debamos tener en cuenta?<br>
-                <select [(ngModel)]="necesidadOpcion" name="Reponder" class="select--input"  required>
-                    <option value="Seleccionar...">Seleccionar...</option>
-                    <option value="Si">Si</option>
-                    <option value="No">No</option>
+                <select [(ngModel)]="confirmacion.discapacidad" name="Reponder" class="select--input"  required>
+                    <option [ngValue]="undefined">Seleccionar...</option>
+                    <option [ngValue]="true">Si</option>
+                    <option [ngValue]="false">No</option>
                 </select> 
         </li>
-         @if(necesidadOpcion==='Si'){
+         @if(confirmacion.discapacidad==='Si'){
             <p>Por favor descríba su necesidad especial:<br>
-            <input type="text" class="txtBox--input" name="necesidadesEspeciales" placeholder="Mi pareja usa silla de ruedas">
+            <input type="text" class="txtBox--input" name="necesidadesEspeciales" placeholder="Mi pareja usa silla de ruedas" [(ngModel)]="confirmacion.discapacidadEsp">
         </p>}
-        <li>Comentarios adicionales importantes:<br>
+        <li [(ngModel)]="confirmacion.comentarios">Comentarios adicionales importantes:<br>
             <input type="text" class="txtBox--input" name="comentarios">
         </li>
     </ol>

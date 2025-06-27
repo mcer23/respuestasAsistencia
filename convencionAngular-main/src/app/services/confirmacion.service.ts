@@ -1,9 +1,11 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
+import { Confirmacion } from "../interface/confirmacion/confirmacion.interface";
 
-export interface Confirmacion {
-    id: number;
+// se omite ya que hay un archivo interface, que cumple con lo que esta aqui.
+
+/* export interface Confirmacion {
     fechaRegistro: Date;
     numEmpleado: string;
     nombreCompleto: string;
@@ -12,11 +14,11 @@ export interface Confirmacion {
     parejaAsiste: boolean;
     nombrePareja: string;
     alergiaAlimentaria: boolean;
-    especificacionAlergia: string;
+    alergiaEsp: string;
     discapacidad: boolean;
-    descripcionDiscapacidad: string;
+    discapacidadEsp: string;
     comentarios: string;
-}
+ }*/
 @Injectable({
     providedIn: "root"
 })
@@ -34,24 +36,15 @@ export class ConfirmacionService {
         return this.http.get<Confirmacion>(`${this.baseUrl}/usuario/actual`);
     }
     
-
     getConfirmaciones(): Observable<Confirmacion[]> {
         return this.http.get<Confirmacion[]>(this.baseUrl);
     }
 
-    getConfirmacion(id: number): Observable<Confirmacion> {
-        return this.http.get<Confirmacion>(`${this.baseUrl}/${id}`);
+    getConfirmacion(numEmpleado: string): Observable<Confirmacion> {
+        return this.http.get<Confirmacion>(`${this.baseUrl}/${numEmpleado}`);
     }
 
     createConfirmacion(confirmacion: Confirmacion): Observable<Confirmacion> {
         return this.http.post<Confirmacion>(this.baseUrl, confirmacion);
-    }
-
-    updateConfirmacion(confirmacion: Confirmacion): Observable<Confirmacion> {
-        return this.http.put<Confirmacion>(`${this.baseUrl}/${confirmacion.id}`, confirmacion);
-    }
-
-    deleteConfirmacion(id: number): Observable<void> {
-        return this.http.delete<void>(`${this.baseUrl}/${id}`);
     }
 }
