@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { MsalGuard } from '@azure/msal-angular';
-import { ProtectedComponent } from './components/routes/protected/protected.component';
+import { protectedComponent } from './components/routes/protected/protected.component';
 import { DefaultLayoutComponent } from './components/layout/default-layout/default-layout.component';
 import { LoginComponent } from './components/routes/login/login.component';
 export const routesWithoutLoginComponent: Routes = [
@@ -11,7 +11,7 @@ export const routesWithoutLoginComponent: Routes = [
         children: [
             {
                 path: '',
-                component: ProtectedComponent,
+                component: protectedComponent,
                 canActivate: [MsalGuard],
             }
         ]
@@ -37,7 +37,7 @@ export const routes: Routes = [
         children: [
             {
                 path: '',
-                component: ProtectedComponent,
+                component: protectedComponent,
                 canActivate: [MsalGuard],
             }
         ]

@@ -7,7 +7,7 @@
 <div class="section--questions">
     <ol>
         <li>¿Asistirá a la Convención Nacional 2026?<br>
-            <select [(ngModel)]="confirmacion.parejaAsiste" name="invitadoAsiste" class="select--input" required>
+            <select [(ngModel)]="confirmacion.invitadoAsiste" name="invitadoAsiste" class="select--input" required>
                 <option [ngValue]="undefined">Seleccionar...</option>
                 <option [ngValue]="true">Si</option>
                 <option [ngValue]="false">No</option>
@@ -20,11 +20,11 @@
                     <option [ngValue]="false">No</option>
                 </select>   
         </li>
-        @if(confirmacion.parejaAsiste==='Si'){
+        <div *ngIf="confirmacion.parejaAsiste===true">
             <p>Confirma el nombre completo de su pareja.<br>
             <input  type="text" class="txtBox--input" name="nomPareja" placeholder="Nombre(s), apellido paterno y apellido materno">
             </p> 
-        }
+        </div>
         <li>¿Tienes alguna alergia alimentaria que debamos considerar?<br>  
                 <select [(ngModel)]="confirmacion.alergiaAlimentaria" name="Reponder" class="select--input"  required>
                     <option [ngValue]="undefined">Seleccionar...</option>
@@ -32,11 +32,11 @@
                     <option [ngValue]="false">No</option>
                 </select>  
         </li> 
-        @if(confirmacion.alergiaAlimentaria==='Si'){
+        <div *ngIf="confirmacion.alergiaAlimentaria===true">
             <p>Por favor especifíque su alergia:<br>
             <input  type="text" class="txtBox--input" name="alergias" placeholder="Tengo alergia a los mariscos."[(ngModel)]="confirmacion.alergiaEsp">
-        </p>
-        } 
+            </p>
+        </div>
         <li>¿Tienes alguna necesidad especial relacionada con accesibilidad o alguna discapacidad que debamos tener en cuenta?<br>
                 <select [(ngModel)]="confirmacion.discapacidad" name="Reponder" class="select--input"  required>
                     <option [ngValue]="undefined">Seleccionar...</option>
@@ -44,10 +44,11 @@
                     <option [ngValue]="false">No</option>
                 </select> 
         </li>
-         @if(confirmacion.discapacidad==='Si'){
+        <div *ngIf="confirmacion.discapacidad===true">
             <p>Por favor descríba su necesidad especial:<br>
             <input type="text" class="txtBox--input" name="necesidadesEspeciales" placeholder="Mi pareja usa silla de ruedas" [(ngModel)]="confirmacion.discapacidadEsp">
-        </p>}
+        </p>
+        </div>
         <li [(ngModel)]="confirmacion.comentarios">Comentarios adicionales importantes:<br>
             <input type="text" class="txtBox--input" name="comentarios">
         </li>
@@ -55,5 +56,5 @@
      
 </div>
 <span class="icon--footer"></span>
-<button class="btn-enviar">Enviar</button><!-- reenviar respuestas al correo del colab -->
+<button class="btn-enviar" (click)="enviarFormulario">Enviar</button><!-- reenviar respuestas al correo del colab -->
 </section>

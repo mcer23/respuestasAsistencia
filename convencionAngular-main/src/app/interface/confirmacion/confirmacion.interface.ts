@@ -3,12 +3,12 @@ export interface Confirmacion {
     numEmpleado: string;
     nombreCompleto: string;
     correo: string;
-    invitadoAsiste: boolean;
-    parejaAsiste: boolean;
+    invitadoAsiste?: boolean;
+    parejaAsiste?: boolean;
     nombrePareja: string;
-    alergiaAlimentaria: boolean;
+    alergiaAlimentaria?: boolean;
     alergiaEsp: string;
-    discapacidad: boolean;
+    discapacidad?: boolean;
     discapacidadEsp: string;
     comentarios: string;
 }

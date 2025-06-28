@@ -23,9 +23,14 @@ import { Confirmacion } from "../interface/confirmacion/confirmacion.interface";
     providedIn: "root"
 })
 export class ConfirmacionService {
-    private baseUrl = 'http://localhost:8080/api/confirmaciones'; // Cambia esto por la URL de tu API
+    private baseUrl = 'http://localhost:4200/api/respuestasConvencionNacional'; // Cambia esto por la URL de tu API
 
     constructor(private http: HttpClient) {}
+    
+    createConfirmacion(confirmacion: Confirmacion): Observable<Confirmacion>{
+        return this.http.post <Confirmacion> (this.baseUrl, confirmacion);
+
+    }
     getInicioSesion(): Observable<Confirmacion> {
         return this.http.get<Confirmacion>(`${this.baseUrl}/inicio-sesion`);
     }

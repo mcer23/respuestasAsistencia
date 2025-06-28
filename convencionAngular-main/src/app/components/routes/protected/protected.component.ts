@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-//import { AppService } from '../../../services/app.service';
-// import { AuthService } from '../../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ConfirmacionService } from '../../../services/confirmacion.service';
-//Interfaces
-import { Usuario} from '../../../interface/usuario/usuario.interface';
-// import { inicioSesion } from '../../../interface/inicioSesion/inicioSesion.interface';
+import { Confirmacion } from '../../../interface/confirmacion/confirmacion.interface';
 
 
 @Component({
@@ -17,37 +13,50 @@ import { Usuario} from '../../../interface/usuario/usuario.interface';
   styleUrl: './protected.component.scss'
 })
 
-export class ProtectedComponent implements OnInit {
-  confirmacion:confirmacion={
-    numEmpleado:'',
-    nombreCompleto:'',
-    correo:'',
-    invitadoAsiste:'Seleccionar...',
-    parejaAsiste:'Seleccionar...',
-    nombrePareja:'',
-    alergiaAlimentaria:'Seleccionar...',
-    alergiaEsp:'',
-    discapacidad:'Seleccionar...',
-    discapacidadEsp:'',
-    comentarios:'',
-
+export class protectedComponent implements OnInit {
+  confirmacion: Confirmacion = {
+    fechaRegistro: new Date(),
+    numEmpleado: '98585991',
+    nombreCompleto: 'MELISSA CECILIA ESTRADA RAMOS',
+    correo: 'melissa.estrada@coppel.com',
+    invitadoAsiste: undefined,
+    parejaAsiste: undefined,
+    nombrePareja: '',
+    alergiaAlimentaria: undefined,
+    alergiaEsp: '',
+    discapacidad: undefined,
+    discapacidadEsp: '',
+    comentarios: ''
   };
-  usuario=Usuario;
-  private cargarDatosUsuario(): void {
-  const usuario = this.usuario.getUsuarioActual();
-  if (usuario) {
-    this.confirmacion.numEmpleado = usuario.numEmpleado;
-    this.confirmacion.nombreCompleto = usuario.nombreCompleto;
-    this.confirmacion.correo = usuario.correo;
+
+  constructor(private confirmacionService: ConfirmacionService) {}
+
+  ngOnInit(): void {}
+
+  enviarFormulario(): void {
+    // Validaciones básicas antes de enviar
+    if (this.confirmacion.parejaAsiste === false) {
+      this.confirmacion.nombrePareja = 'N/A';}
+    
+    if (this.confirmacion.alergiaAlimentaria === false) {
+      this.confirmacion.alergiaEsp = 'N/A';}
+    
+    if (this.confirmacion.discapacidad === false) {
+      this.confirmacion.discapacidadEsp = 'N/A';}
+    
+
+    this.confirmacionService.createConfirmacion(this.confirmacion).subscribe({
+      next: (respuesta) => {
+        alert('¡Respuestas enviadas correctamente!');
+        console.log('Respuesta del servidor:', respuesta);
+      },
+      error: (error) => {
+        console.error('Error al enviar:', error);
+        alert('Ocurrio un error al enviar la información.');
+        
+      }
+    });
   }
 }
-
-
-
-
-
-
-
-  }
 
  
