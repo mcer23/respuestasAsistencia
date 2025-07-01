@@ -19,30 +19,65 @@ $lightText:#2E2E2E;
 $lightSubtext:#636161;
 $lightBorder:#FDDA25;
 $lightReject:#E43B3B;
+
+.icon--header{
+    content: url(../protected/assetsConvencion/ico/Eclipse.png);
+    position: absolute;
+    width:92px;
+    left:-50px;
+    top: 10px;
+    z-index: 1;
+    overflow: hidden;
+
+}
+.icon--footer{
+    content: url(../protected/assetsConvencion/ico/asset_footer.png);
+    position: absolute;
+    overscroll-behavior-x: hidden;
+    width:180px;
+    right:-60px;
+    bottom:40px;
+    z-index: 1;
+    overflow: hidden;
+
+}
 section{
     display: flex;
     justify-content: center;
     margin-top:165px;
+   
 }
 .signin--styles h1, .signin--styles p{
     color: $lightTitle;
+    text-align: center;
 }
 
 .signin--styles img{
+    display: flex;
     width:226px;
     height: auto;
+    justify-content: center;
+    margin: 0 auto;
+
     
+}
+.signin--styles p{
+    text-align: center;
+    margin-top:10%;
 }
 .signin--btn{
     display: flex;
     justify-content: center;
-    margin-top:23px;
+    margin: 0 auto;;
+
+    padding-top:23px;
 
 }
 p-button{
     width:249px;
     height: 42px;
     border-radius: 23px;
+    text-align: center;
 }
 
    

@@ -6,15 +6,13 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.coppel.dto.ApiResponseDTO;
-import com.coppel.dto.RespuestasDTO;
 import com.coppel.models.RespuestasAsistencia;
 import com.coppel.repositories.RespuestasRepository;
 import com.coppel.services.RespuestasService;
 import com.coppel.util.Meta;
 
 @RestController
-@RequestMapping("/api/respuestasConvencionNacional")
+@RequestMapping("/respuestasConvencionNacional")
 @CrossOrigin (origins="http://localhost:4200")
 
 public class RespuestasController {
@@ -55,7 +53,7 @@ public class RespuestasController {
 
 
 
-    @PostMapping
+    @PostMapping("/guardarRespuestas") 
     public RespuestasAsistencia guardarRespuestas(@RequestBody RespuestasAsistencia respuestas) {
         return RespuestasRepository.save(respuestas);
     }

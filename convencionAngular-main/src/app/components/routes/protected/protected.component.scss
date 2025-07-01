@@ -53,15 +53,23 @@ section{
     width:70%;
     text-wrap: wrap;
 }
+
+
 .select--input{
     margin-top: 8px;
-    width:90%;
+    width:80%;
     height: auto;
     border: 1px solid #B2B2B2;
 }
 .txtBox--input{
     margin-top: 8px;
-    width:90%;
+    width:56%;
+    height: 50px;
+    border: 1px solid #B2B2B2;
+}
+.txtBox-input--comment{
+    margin-top: 8px;
+    width:80%;
     height: 50px;
     border: 1px solid #B2B2B2;
 }

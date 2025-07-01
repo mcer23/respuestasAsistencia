@@ -23,12 +23,12 @@ import { Confirmacion } from "../interface/confirmacion/confirmacion.interface";
     providedIn: "root"
 })
 export class ConfirmacionService {
-    private baseUrl = 'http://localhost:4200/api/respuestasConvencionNacional'; // Cambia esto por la URL de tu API
+    private baseUrl = 'http://127.0.0.1:8080/api/v1/respuestasConvencionNacional'; // Cambia esto por la URL de tu API
 
     constructor(private http: HttpClient) {}
     
     createConfirmacion(confirmacion: Confirmacion): Observable<Confirmacion>{
-        return this.http.post <Confirmacion> (this.baseUrl, confirmacion);
+        return this.http.post <Confirmacion> (this.baseUrl +'/guardarRespuestas', confirmacion);
 
     }
     getInicioSesion(): Observable<Confirmacion> {
@@ -49,7 +49,4 @@ export class ConfirmacionService {
         return this.http.get<Confirmacion>(`${this.baseUrl}/${numEmpleado}`);
     }
 
-    createConfirmacion(confirmacion: Confirmacion): Observable<Confirmacion> {
-        return this.http.post<Confirmacion>(this.baseUrl, confirmacion);
-    }
 }

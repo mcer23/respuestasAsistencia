@@ -25,7 +25,7 @@
             <input  type="text" class="txtBox--input" name="nomPareja" placeholder="Nombre(s), apellido paterno y apellido materno">
             </p> 
         </div>
-        <li>¿Tienes alguna alergia alimentaria que debamos considerar?<br>  
+        <li >¿Tienes alguna alergia alimentaria que debamos considerar?<br>  
                 <select [(ngModel)]="confirmacion.alergiaAlimentaria" name="Reponder" class="select--input"  required>
                     <option [ngValue]="undefined">Seleccionar...</option>
                     <option [ngValue]="true">Si</option>
@@ -37,7 +37,7 @@
             <input  type="text" class="txtBox--input" name="alergias" placeholder="Tengo alergia a los mariscos."[(ngModel)]="confirmacion.alergiaEsp">
             </p>
         </div>
-        <li>¿Tienes alguna necesidad especial relacionada con accesibilidad o alguna discapacidad que debamos tener en cuenta?<br>
+        <li class="question-width">¿Tienes alguna necesidad especial relacionada con accesibilidad que debamos tener en cuenta?<br>
                 <select [(ngModel)]="confirmacion.discapacidad" name="Reponder" class="select--input"  required>
                     <option [ngValue]="undefined">Seleccionar...</option>
                     <option [ngValue]="true">Si</option>
@@ -50,11 +50,11 @@
         </p>
         </div>
         <li [(ngModel)]="confirmacion.comentarios">Comentarios adicionales importantes:<br>
-            <input type="text" class="txtBox--input" name="comentarios">
+            <input type="text" class="txtBox-input--comment" name="comentarios">
         </li>
     </ol>
      
 </div>
 <span class="icon--footer"></span>
-<button class="btn-enviar" (click)="enviarFormulario">Enviar</button><!-- reenviar respuestas al correo del colab -->
+<button class="btn-enviar" (click)="enviarFormulario()">Enviar</button><!-- reenviar respuestas al correo del colab -->
 </section>

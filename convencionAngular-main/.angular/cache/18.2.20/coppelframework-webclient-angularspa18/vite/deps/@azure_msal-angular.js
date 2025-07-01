@@ -1,16 +1,4 @@
 import {
-  BrowserConfigurationAuthError,
-  BrowserUtils_exports,
-  EventMessageUtils,
-  InteractionStatus,
-  InteractionType,
-  NavigationClient,
-  StringUtils,
-  UrlString,
-  WrapperSKU
-} from "./chunk-RTCQRKTI.js";
-import "./chunk-UFIHIJ5E.js";
-import {
   Router
 } from "./chunk-YIFWDJ4F.js";
 import "./chunk-PSV6JIL4.js";
@@ -50,6 +38,18 @@ import {
   take
 } from "./chunk-YUAOAMK6.js";
 import "./chunk-OTNMZIEQ.js";
+import {
+  BrowserConfigurationAuthError,
+  BrowserUtils_exports,
+  EventMessageUtils,
+  InteractionStatus,
+  InteractionType,
+  NavigationClient,
+  StringUtils,
+  UrlString,
+  WrapperSKU
+} from "./chunk-RTCQRKTI.js";
+import "./chunk-UFIHIJ5E.js";
 import {
   __async,
   __spreadProps,

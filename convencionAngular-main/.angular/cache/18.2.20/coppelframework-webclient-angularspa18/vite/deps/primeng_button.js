@@ -1,19 +1,19 @@
 import {
+  AutoFocus
+} from "./chunk-7CX5BSYC.js";
+import {
   BaseIcon,
   Ripple
-} from "./chunk-4PCRTZFA.js";
+} from "./chunk-EXS4AVPU.js";
+import {
+  DomHandler
+} from "./chunk-EPZ5NG4U.js";
 import {
   ObjectUtils,
   PrimeTemplate,
   SharedModule,
   UniqueComponentId
 } from "./chunk-PDANHYNK.js";
-import {
-  AutoFocus
-} from "./chunk-7CX5BSYC.js";
-import {
-  DomHandler
-} from "./chunk-EPZ5NG4U.js";
 import {
   DOCUMENT,
   NgClass,

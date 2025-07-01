@@ -52,7 +52,7 @@ export class protectedComponent implements OnInit {
       },
       error: (error) => {
         console.error('Error al enviar:', error);
-        alert('Ocurrio un error al enviar la información.');
+        alert('Ocurrio un error al enviar la información.'+error);
         
       }
     });
