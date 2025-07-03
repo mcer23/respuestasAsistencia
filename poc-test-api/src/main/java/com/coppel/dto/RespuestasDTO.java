@@ -1,3 +1,4 @@
+
 package com.coppel.dto;
 
 import java.time.LocalDate;
@@ -33,7 +34,7 @@ import lombok.NoArgsConstructor;
      * @param alergiaEsp
      * @param discapacidadEsp
      * @param fechaRegistro
-     */
+     **/
     public RespuestasDTO(String numEmpleado, String nombreCompleto, Boolean invitadoAsiste, Boolean parejaAsiste, Boolean alergiaAlimentaria, Boolean discapacidad, String comentarios, String alergiaEsp, String discapacidadEsp) {
         this.numEmpleado = numEmpleado;
         this.nombreCompleto = nombreCompleto;
@@ -49,3 +50,7 @@ import lombok.NoArgsConstructor;
 
     public List <RespuestasDTO> RespuestasList;
 }
+
+
+
+    

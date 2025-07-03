@@ -6,6 +6,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
 import com.coppel.consultaSQL.ImplRespuestasSQL;
+import com.coppel.dto.ConfirmacionDTO;
 import com.coppel.services.RespuestasService;
 
 
@@ -19,6 +20,11 @@ public class ImplRespuestas implements RespuestasService{
     public Object consultarLista(String numEmpleado, String nombreCompleto, Boolean invitadoAsiste){
       return this.implRespuestasSQL.obtenerRespuestas(numEmpleado,nombreCompleto,invitadoAsiste);
       
+    }
+
+    @Override
+    public Object InsetListaConfirmacion(ConfirmacionDTO confirmacion){
+      return this.implRespuestasSQL.InsetListaConfirmacion(confirmacion);
     }
 
     

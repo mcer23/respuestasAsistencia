@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { HttpClient, HttpErrorResponse, HttpResponse, HttpHeaders } from "@angular/common/http";
+import {  catchError, Observable, throwError } from "rxjs";
+import { map } from 'rxjs/operators';
 import { Confirmacion } from "../interface/confirmacion/confirmacion.interface";
 
 // se omite ya que hay un archivo interface, que cumple con lo que esta aqui.
@@ -27,10 +28,44 @@ export class ConfirmacionService {
 
     constructor(private http: HttpClient) {}
     
-    createConfirmacion(confirmacion: Confirmacion): Observable<Confirmacion>{
-        return this.http.post <Confirmacion> (this.baseUrl +'/guardarRespuestas', confirmacion);
-
+    /*createConfirmacion(confirmacion: Confirmacion): Observable<Confirmacion> {
+  return this.http.post<Confirmacion>(`${this.baseUrl}/guardarRespuestas`, confirmacion)
+  //agregado 1 jul
+    .pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error in createConfirmacion:', error);
+        return throwError(() => error);
+      })
+    );
+}
+// prueba 1jul
+    createConfirmacion(confirmacion: Confirmacion): Observable<Confirmacion> {
+  console.log('Sending to:', `${this.baseUrl}/guardarRespuestas`);
+  return this.http.post<Confirmacion>(
+    `${this.baseUrl}/guardarRespuestas`, 
+    confirmacion,
+    { observe: 'response' }
+  ).pipe(
+    map((response: HttpResponse<any>) => {
+      console.log('Full HTTP response:', response);
+      return response.body as Confirmacion;
+    }),
+    catchError((error: HttpErrorResponse) => {
+      console.error('Detailed error:', error);
+      return throwError(() => error);
+    })
+  );
+}*/
+    // 2 jul
+    createConfirmacion(confirmacion:any){
+        const headers = new HttpHeaders({
+            'Content-type':'applicacion/json'
+        });
+        return this.http.post(`${this.baseUrl}/guardarRespuestas`,confirmacion, {headers});
     }
+
+
+//sigue igual
     getInicioSesion(): Observable<Confirmacion> {
         return this.http.get<Confirmacion>(`${this.baseUrl}/inicio-sesion`);
     }

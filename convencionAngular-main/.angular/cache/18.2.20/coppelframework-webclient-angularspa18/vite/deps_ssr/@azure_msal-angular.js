@@ -1,8 +1,5 @@
 import { createRequire } from 'module';const require = createRequire(import.meta.url);
 import {
-  __awaiter
-} from "./chunk-6I2P25IP.js";
-import {
   BrowserConfigurationAuthError,
   BrowserUtils_exports,
   EventMessageUtils,
@@ -15,15 +12,18 @@ import {
 } from "./chunk-TRXEAREW.js";
 import "./chunk-5DEH5263.js";
 import {
+  __awaiter
+} from "./chunk-6I2P25IP.js";
+import {
   Router
-} from "./chunk-ECH4QOUP.js";
-import "./chunk-UW3QVPKQ.js";
-import "./chunk-CPTGZOTF.js";
+} from "./chunk-HEWJ7X4J.js";
+import "./chunk-EYORBHTB.js";
+import "./chunk-243UKC63.js";
 import {
   CommonModule,
   DOCUMENT,
   Location
-} from "./chunk-U7QG3YQX.js";
+} from "./chunk-XUHHEG6K.js";
 import {
   Component,
   Inject,
@@ -31,7 +31,6 @@ import {
   InjectionToken,
   NgModule,
   Optional,
-  require_operators,
   setClassMetadata,
   ɵɵdefineComponent,
   ɵɵdefineInjectable,
@@ -39,10 +38,14 @@ import {
   ɵɵdefineNgModule,
   ɵɵdirectiveInject,
   ɵɵinject
-} from "./chunk-V3FKMJLX.js";
+} from "./chunk-A57BVX3P.js";
+import {
+  require_operators
+} from "./chunk-X5RV5O3E.js";
 import {
   require_cjs
-} from "./chunk-VODUN5GR.js";
+} from "./chunk-KIFJ2LSB.js";
+import "./chunk-MUAKUJFK.js";
 import {
   __toESM
 } from "./chunk-NMKJ35H3.js";
