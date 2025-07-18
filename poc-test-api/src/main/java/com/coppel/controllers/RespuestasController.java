@@ -9,16 +9,21 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.coppel.dto.ConfirmacionDTO;
 import com.coppel.models.RespuestasAsistencia;
 // import com.coppel.repositories.RespuestasRepository;
 import com.coppel.services.RespuestasService;
 import com.coppel.util.Meta;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@RestController
+
+
 
 @CrossOrigin (origins="http://localhost:4200")
 @RequestMapping("/api/v1/respuestasConvencionNacional")
+@RestController
 public class RespuestasController {
 
     // @Autowired /* proporciona al controlador el UserService necesario.*/
@@ -53,6 +58,11 @@ public class RespuestasController {
         return this.respuestasService.consultarLista(numemp, nombrecompleto, true);
     }
 
+//11 jul
+    @PostMapping("/guardarRespuestas")
+    public ResponseEntity<?> guardarRespuestas(@RequestBody ConfirmacionDTO confirmacion) {
+     return null;
+}
 
     //original
 // @PostMapping("/guardarRespuestas") 

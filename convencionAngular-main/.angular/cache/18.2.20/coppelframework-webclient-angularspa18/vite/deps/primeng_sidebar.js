@@ -1,19 +1,19 @@
 import {
   TimesIcon
-} from "./chunk-5ZCVF42H.js";
+} from "./chunk-IMSWRAIM.js";
 import {
   Ripple,
   RippleModule
-} from "./chunk-NQJTRUL2.js";
+} from "./chunk-D5KQWITT.js";
+import {
+  DomHandler
+} from "./chunk-EPZ5NG4U.js";
 import {
   PrimeNGConfig,
   PrimeTemplate,
   SharedModule,
   zindexutils
 } from "./chunk-LQK5N6QZ.js";
-import {
-  DomHandler
-} from "./chunk-EPZ5NG4U.js";
 import {
   animate,
   animation,
@@ -78,8 +78,8 @@ import {
   ɵɵtemplate,
   ɵɵtemplateRefExtractor
 } from "./chunk-V4GOYE7T.js";
-import "./chunk-YW6J2FB2.js";
 import "./chunk-GRTWDIJA.js";
+import "./chunk-YW6J2FB2.js";
 import "./chunk-H6MMJ4OT.js";
 import "./chunk-OTNMZIEQ.js";
 import "./chunk-XANWHRD5.js";

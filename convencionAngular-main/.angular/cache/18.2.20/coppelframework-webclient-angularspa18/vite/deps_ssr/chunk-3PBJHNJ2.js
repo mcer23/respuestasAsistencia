@@ -5,7 +5,7 @@ import {
 import {
   DOCUMENT,
   isPlatformBrowser
-} from "./chunk-XUHHEG6K.js";
+} from "./chunk-264CBY7E.js";
 import {
   Directive,
   ElementRef,
@@ -19,7 +19,7 @@ import {
   ɵɵdefineDirective,
   ɵɵdefineInjector,
   ɵɵdefineNgModule
-} from "./chunk-A57BVX3P.js";
+} from "./chunk-ZSUUGDFR.js";
 
 // node_modules/primeng/fesm2022/primeng-autofocus.mjs
 var AutoFocus = class _AutoFocus {
@@ -119,4 +119,4 @@ export {
   AutoFocus,
   AutoFocusModule
 };
-//# sourceMappingURL=chunk-Q5JNBZ6U.js.map
+//# sourceMappingURL=chunk-3PBJHNJ2.js.map

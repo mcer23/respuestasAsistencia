@@ -56,8 +56,8 @@ export class ConfirmacionService {
     })
   );
 }*/
-    // 2 jul
-    createConfirmacion(confirmacion:any){
+    // 11 jul
+    createConfirmacion(confirmacion: Confirmacion){
         const headers = new HttpHeaders({
             'Content-type':'applicacion/json'
         });

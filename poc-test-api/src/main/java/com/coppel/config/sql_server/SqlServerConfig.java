@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.sql.DataSource;
 
@@ -89,6 +91,8 @@ public class SqlServerConfig {
     public JdbcTemplate sqlServerRes(@Qualifier("sqlServerRespuestasDataSource") DataSource dataSource) {
         return new JdbcTemplate(dataSource);
     }
+
+
 
         // //sustitur la info
         // @Bean(name = "mysqlAsistenciaConvencion")

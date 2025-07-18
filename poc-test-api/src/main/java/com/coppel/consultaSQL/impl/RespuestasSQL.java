@@ -18,61 +18,78 @@ import com.coppel.dto.RespuestasDTO;
 
 @Component
 public class RespuestasSQL implements ImplRespuestasSQL{
+
+    private static final Logger log = LoggerFactory.getLogger(RespuestasSQL.class);
+
+    // private final ConfirmacionController confirmacionController;
     @Autowired
-    @Qualifier("sqlServerRes") // Este nombre debe coincidir con el del Bean
+    @Qualifier("sqlServerRes") // Este nombre debe coincidir con el del Bean: el bean de SqlServerConfig es sqlServerRespuestasDataSource
     private JdbcTemplate jdbcSqlServer;
 
-    private static Logger log = LoggerFactory.getLogger(RespuestasSQL.class);
+    /* private static Logger log = LoggerFactory.getLogger(RespuestasSQL.class);
+    RespuestasSQL(ConfirmacionController confirmacionController) {
+        this.confirmacionController = confirmacionController;
+    } */
 
     @Override
     public Optional<List <RespuestasDTO>> obtenerRespuestas (String numEmpleado, String nombreCompleto, Boolean invitadoAsiste) {
         try {
             if (checkAuthorization("authorization")) {
-                String consulta = "SELECT * FROM respuestas WHERE numEmpleado = ?";
+                String sql = "SELECT * FROM respuestas WHERE numEmpleado = ?";
                 List<RespuestasDTO> result = jdbcSqlServer.query(
-                        consulta,
-                        BeanPropertyRowMapper.newInstance(RespuestasDTO.class),
+                        sql,
+                        new BeanPropertyRowMapper<>(RespuestasDTO.class),
                         numEmpleado
                 );
                 return Optional.ofNullable(result.isEmpty() ? null : result);
             }
+            return Optional.empty();
         } catch (Exception e) {
+            log.error("Error en obtenerRespuesta. ",numEmpleado, e);
             throw new RuntimeException("Error en consulta: " + e.getMessage());
         }
-        return Optional.empty();
     }
 
     @Override
-    public void ctlRespuestas (String numEmpleado) {
-        if (checkAuthorization("authorization")) {
-            String consulta = "INSERT INTO log_accesos (num_empleado) VALUES (?)";
-            jdbcSqlServer.update(consulta, numEmpleado);
-        }
-    }
-
-    @Override
-    public Object InsetListaConfirmacion(ConfirmacionDTO confirmacionDTO){
+    public String InsertListaConfirmacion(ConfirmacionDTO confirmacionDTO){
         try {
             if (checkAuthorization("authorization")) {
-                String consulta = "INSERT INTO respuestasAsistencia.dbo.respuestas\n" + //
-                                        "(numEmpleado, nombreCompleto, invitadoAsiste, parejaAsiste, nombrePareja, alergiaAlimentaria, discapacidad, alergiaEsp, discapacidadEsp, comentarios, correo)\n" + //
-                                        "VALUES(?, ?, ?, ?, ?, ?,?, ?, ?, ?,?);\n" + //
-                                        "";
-                List<RespuestasDTO> result = jdbcSqlServer.query(
-                        consulta,
-                        BeanPropertyRowMapper.newInstance(RespuestasDTO.class),
-                        confirmacionDTO.getNumEmpleado(), confirmacionDTO.getNombreCompleto(), confirmacionDTO.getInvitadoAsiste(), confirmacionDTO.getParejaAsiste(), confirmacionDTO.getNombrePareja(), confirmacionDTO.getAlergiaAlimentaria(), confirmacionDTO.getDiscapacidad(), confirmacionDTO.getAlergiaEsp(), confirmacionDTO.getDiscapacidadEsp(), confirmacionDTO.getComentarios(), confirmacionDTO.getCorreo()
-                );
-                return Optional.ofNullable(result.isEmpty() ? null : result);
+                String sql = "INSERT INTO respuestasAsistencia.dbo.respuestas" +
+                "(numEmpleado, nombreCompleto, invitadoAsiste, parejaAsiste, nombrePareja, alergiaAlimentaria, discapacidad, alergiaEsp, discapacidadEsp, comentarios, correo)" + 
+                "VALUES(?, ?, ?, ?, ?, ?,?, ?, ?, ?,?, ?);";
+                                       
+                jdbcSqlServer.update(
+                sql,
+                confirmacionDTO.getFechaRegistro(),
+                confirmacionDTO.getNumEmpleado(),
+                confirmacionDTO.getNombreCompleto(),
+                confirmacionDTO.getInvitadoAsiste(),
+                confirmacionDTO.getParejaAsiste(),
+                confirmacionDTO.getNombrePareja(),
+                confirmacionDTO.getAlergiaAlimentaria(),
+                confirmacionDTO.getDiscapacidad(),
+                confirmacionDTO.getAlergiaEsp(),
+                confirmacionDTO.getDiscapacidadEsp(),
+                confirmacionDTO.getComentarios(),
+                confirmacionDTO.getCorreo()
+            );                        
+                // List<RespuestasDTO> result = jdbcSqlServer.query(
+                //         consulta,
+                //         BeanPropertyRowMapper.newInstance(RespuestasDTO.class),
+                //         confirmacionDTO.getNumEmpleado(), confirmacionDTO.getNombreCompleto(), confirmacionDTO.getInvitadoAsiste(), confirmacionDTO.getParejaAsiste(), confirmacionDTO.getNombrePareja(), confirmacionDTO.getAlergiaAlimentaria(), confirmacionDTO.getDiscapacidad(), confirmacionDTO.getAlergiaEsp(), confirmacionDTO.getDiscapacidadEsp(), confirmacionDTO.getComentarios(), confirmacionDTO.getCorreo()
+                // );
+                // return Optional.ofNullable(result.isEmpty() ? null : result);
             }
         } catch (Exception e) {
+            log.error("Error en la consulta insertListaConfirmacion: ", confirmacionDTO != null ? confirmacionDTO.getNumEmpleado() : "null", e);
             throw new RuntimeException("Error en consulta: " + e.getMessage());
         }
-        return Optional.empty();
+        return "Confirmacion guardada correctamente";
     }
 
-    private static boolean checkAuthorization(String userName) {
-        return userName.equals("authorization");
+    private boolean checkAuthorization(String userName) {
+        return "authorization". equals(userName);
+        //return userName.equals("authorization");
     }
 
     

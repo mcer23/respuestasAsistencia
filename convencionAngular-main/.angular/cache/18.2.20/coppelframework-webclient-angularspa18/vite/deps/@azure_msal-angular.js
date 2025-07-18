@@ -1,4 +1,16 @@
 import {
+  BrowserConfigurationAuthError,
+  BrowserUtils_exports,
+  EventMessageUtils,
+  InteractionStatus,
+  InteractionType,
+  NavigationClient,
+  StringUtils,
+  UrlString,
+  WrapperSKU
+} from "./chunk-RTCQRKTI.js";
+import "./chunk-UFIHIJ5E.js";
+import {
   Router
 } from "./chunk-DZASFO2I.js";
 import "./chunk-LMCUQXML.js";
@@ -23,8 +35,8 @@ import {
   ɵɵdirectiveInject,
   ɵɵinject
 } from "./chunk-V4GOYE7T.js";
-import "./chunk-YW6J2FB2.js";
 import "./chunk-GRTWDIJA.js";
+import "./chunk-YW6J2FB2.js";
 import {
   BehaviorSubject,
   EMPTY,
@@ -39,18 +51,6 @@ import {
   switchMap,
   take
 } from "./chunk-H6MMJ4OT.js";
-import {
-  BrowserConfigurationAuthError,
-  BrowserUtils_exports,
-  EventMessageUtils,
-  InteractionStatus,
-  InteractionType,
-  NavigationClient,
-  StringUtils,
-  UrlString,
-  WrapperSKU
-} from "./chunk-RTCQRKTI.js";
-import "./chunk-UFIHIJ5E.js";
 import "./chunk-OTNMZIEQ.js";
 import {
   __async,

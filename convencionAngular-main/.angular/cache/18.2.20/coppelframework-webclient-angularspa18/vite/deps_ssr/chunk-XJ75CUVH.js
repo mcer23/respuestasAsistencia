@@ -1,15 +1,15 @@
 import { createRequire } from 'module';const require = createRequire(import.meta.url);
 import {
+  ObjectUtils,
+  PrimeNGConfig
+} from "./chunk-SOYANSV5.js";
+import {
   DomHandler
 } from "./chunk-IWSON5NP.js";
 import {
-  ObjectUtils,
-  PrimeNGConfig
-} from "./chunk-SXIXHUFV.js";
-import {
   DOCUMENT,
   isPlatformBrowser
-} from "./chunk-XUHHEG6K.js";
+} from "./chunk-264CBY7E.js";
 import {
   ChangeDetectionStrategy,
   Component,
@@ -34,7 +34,7 @@ import {
   ɵɵdirectiveInject,
   ɵɵprojection,
   ɵɵprojectionDef
-} from "./chunk-A57BVX3P.js";
+} from "./chunk-ZSUUGDFR.js";
 
 // node_modules/primeng/fesm2022/primeng-ripple.mjs
 var Ripple = class _Ripple {
@@ -282,4 +282,4 @@ export {
   Ripple,
   RippleModule
 };
-//# sourceMappingURL=chunk-IQYDIB3H.js.map
+//# sourceMappingURL=chunk-XJ75CUVH.js.map

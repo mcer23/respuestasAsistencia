@@ -23,8 +23,8 @@ public class ImplRespuestas implements RespuestasService{
     }
 
     @Override
-    public Object InsetListaConfirmacion(ConfirmacionDTO confirmacion){
-      return this.implRespuestasSQL.InsetListaConfirmacion(confirmacion);
+    public Object InsertListaConfirmacion(ConfirmacionDTO confirmacion){
+      return this.implRespuestasSQL.InsertListaConfirmacion(confirmacion);
     }
 
     

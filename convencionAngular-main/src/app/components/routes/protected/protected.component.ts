@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ConfirmacionService } from '../../../services/confirmacion.service';
 import { Confirmacion } from '../../../interface/confirmacion/confirmacion.interface';
-import { confirmacionV2 } from '../../../services/confirmacionV2.service'; //prueba 2 jul
+import { ConfirmacionV2} from '../../../services/confirmacionV2.service'; //prueba 2 jul
 import { AditionalUserData } from '../../../app.interfaces';
+import { AppService } from '../../../../app/services/app.service';
 
 @Component({
   selector: 'app-protected',
@@ -15,11 +16,11 @@ import { AditionalUserData } from '../../../app.interfaces';
 })
 
 export class protectedComponent implements OnInit {
-  confirmacion: Confirmacion = {
-    fechaRegistro: new Date(),
-    numEmpleado: 'TEST num',
-    nombreCompleto: 'TEST name',
-    correo: 'test@coppel.com',
+  confirmacionModel: Confirmacion = {
+    fechaRegistro: new Date().toISOString(),
+    numEmpleado: '',
+    nombreCompleto: '',
+    correo: '',
     invitadoAsiste: null,
     parejaAsiste: null,
     nombrePareja: '',
@@ -33,19 +34,51 @@ export class protectedComponent implements OnInit {
   public accountData = signal<AditionalUserData | null>(null);
   // constructor(private confirmacionService: ConfirmacionService) {}
   constructor(
-    private ConfirmacionV2: confirmacionV2 
+    private ConfirmacionV2Service: ConfirmacionV2,
+    private appService: AppService,
+
   ){}
 
   ngOnInit(): void {}
 
+  
+
   enviarFormularioV2(){
-    this.ConfirmacionV2.createConfirmacion(this.confirmacion).subscribe({
+    //Se guarda en la var declarada = se manda llamar lo que necesito de graph.service
+    //numEmpleado: 'TEST num', nombreCompleto: 'TEST name',
+
+    //Preparar datos
+    const datos= this.appService.accountData();
+
+    //Fecha actual (sin UTC)
+    const now = new Date();
+    const fechaLocalISO = new Date(now.getTime()-(now.getTimezoneOffset()*6000)).toISOString();
+    
+    // this.confirmacion.correo = this.appService.accountData()?.mail; 
+    // this.confirmacion.numEmpleado = this.appService.accountData()?.employeeId; 
+    this.confirmacionModel ={
+      ...this.confirmacionModel,
+      correo: datos?.mail || '',
+      numEmpleado: datos?.employeeId || '',
+      nombreCompleto: `${datos?.givenName || ''} ${datos?.surname || ''}`.trim(),
+     fechaRegistro:fechaLocalISO,
+    }
+    //Enviar datos
+    this.ConfirmacionV2Service.createConfirmacion(this.confirmacionModel).subscribe({
       next:(res) => {
-        console.log('V2 exitoso',res);
-        alert('V2 exitoso' + res.toLocaleString());
+        console.log('Envio de respuesta exitoso',res);
+        alert('Envio de respuesta exitoso' + res.toLocaleString());
       },
-      error: (err) => console.error('V2 error:',err)
+      error: (err) => console.error('error en el envio de respuesta:',err)
     });
+
+    /*this.confirmacionModel.fechaRegistro = new Date();
+    this.confirmacionModel.correo = datos?.mail || '';
+    this.confirmacionModel.numEmpleado = datos?.employeeId || '';
+    this.confirmacionModel.nombreCompleto = `${this.appService.accountData()?.givenName || ''} ${this.appService.accountData()?.surname || ''}`.trim();/*
+    
+    
+    
     
   }
 
@@ -117,4 +150,4 @@ export class protectedComponent implements OnInit {
   });
   }*/
 }
-
+}

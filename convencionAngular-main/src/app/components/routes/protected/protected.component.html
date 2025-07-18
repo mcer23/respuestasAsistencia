@@ -5,56 +5,61 @@
     <p>Responde lo siguiente:</p>
 </div>
 <div class="section--questions">
-    <ol>
+    <form (ngSubmit)="enviarFormularioV2()" #formulario="ngForm">
+        <ol>
         <li>¿Asistirá a la Convención Nacional 2026?<br>
-            <select [(ngModel)]="confirmacion.invitadoAsiste" name="invitadoAsiste" class="select--input" required>
+            <select [(ngModel)]="confirmacionModel.invitadoAsiste" name="invitadoAsiste" class="select--input" required>
                 <option [ngValue]="undefined">Seleccionar...</option>
                 <option [ngValue]="true">Si</option>
                 <option [ngValue]="false">No</option>
             </select>
         </li>
          <li>¿Su pareja asistirá a la Convención Nacional 2026?<br>
-                <select [(ngModel)]="confirmacion.parejaAsiste" name="parejaAsiste" class="select--input"  required>
+                <select [(ngModel)]="confirmacionModel.parejaAsiste" name="parejaAsiste" class="select--input"  required>
                     <option [ngValue]="undefined">Seleccionar...</option>
                     <option [ngValue]="true">Si</option>
                     <option [ngValue]="false">No</option>
                 </select>   
         </li>
-        <div *ngIf="confirmacion.parejaAsiste===true">
+        <div *ngIf="confirmacionModel.parejaAsiste===true">
             <p>Confirma el nombre completo de su pareja.<br>
-            <input  type="text" class="txtBox--input" name="nomPareja" placeholder="Nombre(s), apellido paterno y apellido materno">
+            <input  type="text" class="txtBox--input" [(ngModel)]="confirmacionModel.nombrePareja" name="nombrePareja" placeholder="Nombre(s), apellido paterno y apellido materno" required>
             </p> 
         </div>
         <li >¿Tienes alguna alergia alimentaria que debamos considerar?<br>  
-                <select [(ngModel)]="confirmacion.alergiaAlimentaria" name="Reponder" class="select--input"  required>
+                <select [(ngModel)]="confirmacionModel.alergiaAlimentaria" name="alergiaAlimentaria" class="select--input"  required>
                     <option [ngValue]="undefined">Seleccionar...</option>
                     <option [ngValue]="true">Si</option>
                     <option [ngValue]="false">No</option>
                 </select>  
         </li> 
-        <div *ngIf="confirmacion.alergiaAlimentaria===true">
+        <div *ngIf="confirmacionModel.alergiaAlimentaria===true">
             <p>Por favor especifíque su alergia:<br>
-            <input  type="text" class="txtBox--input" name="alergias" placeholder="Tengo alergia a los mariscos."[(ngModel)]="confirmacion.alergiaEsp">
+            <input  type="text" class="txtBox--input" [(ngModel)]="confirmacionModel.alergiaEsp" name="alergiaEsp" placeholder="Tengo alergia a los mariscos."[(ngModel)]="confirmacionModel.alergiaEsp" required>
             </p>
         </div>
         <li class="question-width">¿Tienes alguna necesidad especial relacionada con accesibilidad que debamos tener en cuenta?<br>
-                <select [(ngModel)]="confirmacion.discapacidad" name="Reponder" class="select--input"  required>
+                <select [(ngModel)]="confirmacionModel.discapacidad" name="discapacidad" class="select--input"  required>
                     <option [ngValue]="undefined">Seleccionar...</option>
                     <option [ngValue]="true">Si</option>
                     <option [ngValue]="false">No</option>
                 </select> 
         </li>
-        <div *ngIf="confirmacion.discapacidad===true">
+        <div *ngIf="confirmacionModel.discapacidad===true">
             <p>Por favor descríba su necesidad especial:<br>
-            <input type="text" class="txtBox--input" name="necesidadesEspeciales" placeholder="Mi pareja usa silla de ruedas" [(ngModel)]="confirmacion.discapacidadEsp">
+            <input type="text" class="txtBox--input" [(ngModel)]="confirmacionModel.discapacidadEsp" name="discapacidadEsp" placeholder="Mi pareja usa silla de ruedas" required>
         </p>
         </div>
-        <li [(ngModel)]="confirmacion.comentarios">Comentarios adicionales importantes:<br>
-            <input type="text" class="txtBox-input--comment" name="comentarios">
+        <li>Comentarios adicionales importantes:<br>
+            <input type="text" class="txtBox-input--comment" [(ngModel)]="confirmacionModel.comentarios" name="comentarios">
         </li>
     </ol>
+    <button type="submit" class="btn-enviar" [disabled]="!formulario.valid">Enviar</button><!-- reenviar respuestas al correo del colab -->
+
+    </form>
+    
      
 </div>
 <span class="icon--footer"></span>
-<button class="btn-enviar" (click)="enviarFormularioV2()">Enviar</button><!-- reenviar respuestas al correo del colab -->
+
 </section>

@@ -31,7 +31,7 @@ public class ConfirmacionController {
     public String guardarRespuestasv2(
         @RequestBody ConfirmacionDTO request
     ){
-        respuestasService.InsetListaConfirmacion(request);
+        respuestasService.InsertListaConfirmacion(request);
         System.out.println("V2 aceptado"+request);
         return "{\"status\":\"success\"}";
     }

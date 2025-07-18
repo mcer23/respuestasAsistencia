@@ -4,5 +4,5 @@ import com.coppel.dto.ConfirmacionDTO;
 
 public interface RespuestasService {
    public Object consultarLista(String numEmpleado, String nombreCompleto, Boolean invitadoAsiste);
-   public Object InsetListaConfirmacion(ConfirmacionDTO Confirma);
+   public Object InsertListaConfirmacion(ConfirmacionDTO Confirma);
 }

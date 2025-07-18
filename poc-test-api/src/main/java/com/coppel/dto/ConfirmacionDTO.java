@@ -1,6 +1,7 @@
 package com.coppel.dto;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ConfirmacionDTO {
 
-    private Date fechaRegistro;
+    private LocalDate fechaRegistro; 
     private String numEmpleado;
     private String nombreCompleto;
     private String correo;
@@ -21,5 +22,13 @@ public class ConfirmacionDTO {
     private Boolean discapacidad;
     private String discapacidadEsp;
     private String comentarios;
+    
+    // Lombok @Data ya genera los getters y setters automáticamente
+
+
 }
+
+
+    
+    
 //Creado para identificar el error en el front. 2 jul

@@ -1,10 +1,10 @@
 import {
+  DomHandler
+} from "./chunk-EPZ5NG4U.js";
+import {
   ObjectUtils,
   PrimeNGConfig
 } from "./chunk-LQK5N6QZ.js";
-import {
-  DomHandler
-} from "./chunk-EPZ5NG4U.js";
 import {
   DOCUMENT,
   isPlatformBrowser
@@ -281,4 +281,4 @@ export {
   Ripple,
   RippleModule
 };
-//# sourceMappingURL=chunk-NQJTRUL2.js.map
+//# sourceMappingURL=chunk-D5KQWITT.js.map

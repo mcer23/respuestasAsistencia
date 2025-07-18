@@ -1,5 +1,6 @@
 export interface Confirmacion {
-    fechaRegistro: Date;
+    [x: string]: any;
+    fechaRegistro: string;
     numEmpleado: string;
     nombreCompleto: string;
     correo: string;

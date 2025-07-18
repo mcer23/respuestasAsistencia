@@ -1,7 +1,7 @@
 import { createRequire } from 'module';const require = createRequire(import.meta.url);
 import {
   BaseIcon
-} from "./chunk-IQYDIB3H.js";
+} from "./chunk-XJ75CUVH.js";
 import {
   Component,
   setClassMetadata,
@@ -15,7 +15,7 @@ import {
   ɵɵelementStart,
   ɵɵgetInheritedFactory,
   ɵɵnamespaceSVG
-} from "./chunk-A57BVX3P.js";
+} from "./chunk-ZSUUGDFR.js";
 
 // node_modules/primeng/fesm2022/primeng-icons-times.mjs
 var TimesIcon = class _TimesIcon extends BaseIcon {
@@ -70,4 +70,4 @@ var TimesIcon = class _TimesIcon extends BaseIcon {
 export {
   TimesIcon
 };
-//# sourceMappingURL=chunk-QEXIEFCJ.js.map
+//# sourceMappingURL=chunk-O24TIEF2.js.map
