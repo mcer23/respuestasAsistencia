@@ -42,6 +42,7 @@ public class RespuestasSQL implements ImplRespuestasSQL{
                         numEmpleado
                 );
                 return Optional.ofNullable(result.isEmpty() ? null : result);
+                
             }
             return Optional.empty();
         } catch (Exception e) {
@@ -55,12 +56,12 @@ public class RespuestasSQL implements ImplRespuestasSQL{
         try {
             if (checkAuthorization("authorization")) {
                 String sql = "INSERT INTO respuestasAsistencia.dbo.respuestas" +
-                "(numEmpleado, nombreCompleto, invitadoAsiste, parejaAsiste, nombrePareja, alergiaAlimentaria, discapacidad, alergiaEsp, discapacidadEsp, comentarios, correo)" + 
-                "VALUES(?, ?, ?, ?, ?, ?,?, ?, ?, ?,?, ?);";
-                                       
+                "( numEmpleado, nombreCompleto, invitadoAsiste, parejaAsiste, nombrePareja, alergiaAlimentaria, discapacidad, alergiaEsp, discapacidadEsp, comentarios, fechaRegistro,correo)" + 
+                "VALUES(?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?,?);";
+                 //Tiene que estar en el mismo orden el INSERT INTO y el UPDATE                      
                 jdbcSqlServer.update(
                 sql,
-                confirmacionDTO.getFechaRegistro(),
+                
                 confirmacionDTO.getNumEmpleado(),
                 confirmacionDTO.getNombreCompleto(),
                 confirmacionDTO.getInvitadoAsiste(),
@@ -71,6 +72,7 @@ public class RespuestasSQL implements ImplRespuestasSQL{
                 confirmacionDTO.getAlergiaEsp(),
                 confirmacionDTO.getDiscapacidadEsp(),
                 confirmacionDTO.getComentarios(),
+                confirmacionDTO.getFechaRegistro(),
                 confirmacionDTO.getCorreo()
             );                        
                 // List<RespuestasDTO> result = jdbcSqlServer.query(
