@@ -35,7 +35,8 @@ public class RespuestasSQL implements ImplRespuestasSQL{
     public Optional<List <RespuestasDTO>> obtenerRespuestas (String numEmpleado, String nombreCompleto, Boolean invitadoAsiste) {
         try {
             if (checkAuthorization("authorization")) {
-                String sql = "SELECT * FROM respuestas WHERE numEmpleado = ?";
+                String sql = "{CALL SP_ObtenerRespuestas (?)}";
+                // String sql = "SELECT * FROM respuestas WHERE numEmpleado = ?";
                 List<RespuestasDTO> result = jdbcSqlServer.query(
                         sql,
                         new BeanPropertyRowMapper<>(RespuestasDTO.class),
@@ -55,13 +56,13 @@ public class RespuestasSQL implements ImplRespuestasSQL{
     public String InsertListaConfirmacion(ConfirmacionDTO confirmacionDTO){
         try {
             if (checkAuthorization("authorization")) {
-                String sql = "INSERT INTO respuestasAsistencia.dbo.respuestas" +
-                "( numEmpleado, nombreCompleto, invitadoAsiste, parejaAsiste, nombrePareja, alergiaAlimentaria, discapacidad, alergiaEsp, discapacidadEsp, comentarios, fechaRegistro,correo)" + 
-                "VALUES(?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?,?);";
+                String sql = "{CALL SP_RESPUESTAS (?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?)}";
+                // String sql = "INSERT INTO respuestasAsistencia.dbo.respuestas" +
+                // "( numEmpleado, nombreCompleto, invitadoAsiste, parejaAsiste, nombrePareja, alergiaAlimentaria, discapacidad, alergiaEsp, discapacidadEsp, comentarios, fechaRegistro,correo)" + 
+                // "VALUES(?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?,?);";
                  //Tiene que estar en el mismo orden el INSERT INTO y el UPDATE                      
                 jdbcSqlServer.update(
                 sql,
-                
                 confirmacionDTO.getNumEmpleado(),
                 confirmacionDTO.getNombreCompleto(),
                 confirmacionDTO.getInvitadoAsiste(),
@@ -82,6 +83,7 @@ public class RespuestasSQL implements ImplRespuestasSQL{
                 // );
                 // return Optional.ofNullable(result.isEmpty() ? null : result);
             }
+            log.info("Respuesta registrada con exito.");
         } catch (Exception e) {
             log.error("Error en la consulta insertListaConfirmacion: ", confirmacionDTO != null ? confirmacionDTO.getNumEmpleado() : "null", e);
             throw new RuntimeException("Error en consulta: " + e.getMessage());
