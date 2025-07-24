@@ -22,11 +22,13 @@ $lightReject:#E43B3B;
 
 section{
     position: relative;
+
 }
 .icon--header{
     content: url(assetsConvencion/ico/Eclipse.png);
     position: absolute;
     width:82px;
+    top: -50px;
     left:-40px;
     z-index: 1;
     overflow: hidden;
@@ -36,12 +38,15 @@ section{
     content: url(assetsConvencion/ico/asset_footer.png);
     position: absolute;
     overscroll-behavior-x: hidden;
-    width:140px;
-    right:-60px;
+    width:180px;
+    right:-90px;
     bottom:1px;
     z-index: 1;
     overflow: hidden;
 
+}
+.section--title{
+    margin-top: 20%;
 }
 .section--title h1, .section--title p, .section--questions ol{
     color: $lightTitle;
@@ -50,16 +55,21 @@ section{
 }
 .section--questions li{
     margin-bottom: 13px;
-    width:70%;
+    width:80%;
     text-wrap: wrap;
 }
-
 
 .select--input{
     margin-top: 8px;
     width:80%;
     height: auto;
     border: 1px solid #B2B2B2;
+}
+select:disabled{
+    background-color: $darkBorder;
+    border: 1px solid $darkBgColor;
+    cursor: not-allowed;
+    opacity: 10%;
 }
 .txtBox--input{
     margin-top: 8px;
@@ -69,7 +79,7 @@ section{
 }
 .txtBox-input--comment{
     margin-top: 8px;
-    width:80%;
+    width:82%;
     height: 50px;
     border: 1px solid #B2B2B2;
 }
@@ -84,20 +94,35 @@ section{
     border: none;
     background-color: $lightSubtitle;
     color: $darkText;
+    margin-top: 40px;
     padding-top: 10px;
 }
+.btn-enviar:hover{
+    background-color:$darkSubtitle ;
+}
 @media (min-width:1000px){
-    .icon--header{
-    width:140px;
+.icon--header{
+    width:157px;
     left:-80px;
+    top:-70px;
 }
 .icon--footer{
-    width:240px;
-    right:-80px;
+    width:250px;
+    right:-90px;
+    bottom:40px;
+}
+.section--title{
+    margin-top: 5%;
+}
+.section--title p, .section--questions ol{
+    font-size: 1.2rem;
 }
 .btn-enviar{
     width:254px;
+    height: 42.31px;
+    margin-top: 70px;
     padding-top: 7px;
+    font-size: 1.4rem;
 }
 
 

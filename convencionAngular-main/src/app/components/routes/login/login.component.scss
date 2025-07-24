@@ -20,6 +20,13 @@ $lightSubtext:#636161;
 $lightBorder:#FDDA25;
 $lightReject:#E43B3B;
 
+.signin--styles{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8%;
+}
 .icon--header{
     content: url(../protected/assetsConvencion/ico/Eclipse.png);
     position: absolute;
@@ -66,10 +73,10 @@ section{
     margin-top:10%;
 }
 .signin--btn{
+    width:200px;
     display: flex;
     justify-content: center;
     margin: 0 auto;;
-
     padding-top:23px;
 
 }
@@ -131,6 +138,23 @@ section {
 @media (max-width: 800px) {
     :host {
         flex-direction: column-reverse;
+    }
+    .icon--header{
+    width:157px;
+    left:-80px;
+    top: 20px;
+
+    }
+    .icon--footer{
+    width:250px;
+    right:-80px;
+    bottom:40px;
+
+    }
+    .signin--btn{
+    width:200px;
+
+
     }
 }
 ///////////////////////////////////////////////////////////
