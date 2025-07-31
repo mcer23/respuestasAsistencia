@@ -30,14 +30,7 @@ public class ConfirmacionController {
         consumes = "application/json",
         produces = "application/json"
     )
-    // 30 jul: Changed return type to ResponseEntity<?> to allow returning different HTTP statuses
-    // public String guardarRespuestasv2(
-    //     @RequestBody ConfirmacionDTO request
-    // ){
-    //     respuestasService.InsertListaConfirmacion(request);
-    //     System.out.println("V2 aceptado"+request);
-    //     return "{\"status\":\"success\"}";
-    // }
+
     public ResponseEntity <?> guardarRespuestasv2(
         @RequestBody ConfirmacionDTO request
     ){
@@ -48,11 +41,11 @@ public class ConfirmacionController {
             return new ResponseEntity<>("{\"status\":\"success\", \"message\":\"Respuestas guardadas exitosamente.\"}", HttpStatus.OK);
         } catch (DataIntegrityViolationException e){
             System.err.println("Error: Primary key duplicado"+ e.getMessage());
-            // The frontend (Angular) will receive this message and can display it as an alert.
+            // Mensaje para mostrarse en el front
             String errorMsg = "{\"status\":\"error\", \"message\":\"Ya existe una respuesta con la misma clave. Por favor, verifica los datos.\"}";
             return new ResponseEntity<>(errorMsg, HttpStatus.CONFLICT); //409
         } catch(Exception e){
-            // This general catch block is being hit when you get a 500 error.
+            // Cuando el error es 500
             System.err.println("Error 500 " + e.getClass().getName()+"Mensaje: "+e.getMessage());
             e.printStackTrace();
 

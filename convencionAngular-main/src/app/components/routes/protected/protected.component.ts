@@ -35,7 +35,7 @@ export class protectedComponent implements OnInit {
   };
 
   public accountData = signal<AditionalUserData | null>(null);
-  // constructor(private confirmacionService: ConfirmacionService) {}
+  
   constructor(
     private ConfirmacionV2Service: ConfirmacionV2,
     private appService: AppService,
@@ -56,8 +56,6 @@ export class protectedComponent implements OnInit {
     const now = new Date();
     const fechaLocalISO = new Date(now.getTime()-(now.getTimezoneOffset()*6000)).toISOString();
     
-    // this.confirmacion.correo = this.appService.accountData()?.mail; 
-    // this.confirmacion.numEmpleado = this.appService.accountData()?.employeeId; 
     this.confirmacionModel ={
       ...this.confirmacionModel,
       correo: datos?.mail || '',
@@ -85,14 +83,6 @@ export class protectedComponent implements OnInit {
         console.error('Error:',error);
         alert(`Error 500: Usuario registrado anteriormente, comuniquese con el área de convenciones.`);
       }
-      //* Enviar datos sin errores ORIGINAL CON ESTE SI FUNCIONA
-      // next:(res) => {
-      //   console.log('Envio de respuesta exitoso',res);
-      //   alert('Envio de respuesta exitoso' + res.toLocaleString());
-      // },
-      // error: (err) => console.error('error en el envio de respuesta:',err)
-
-      //agregado el 23 de jul.
       
 
     });  
@@ -100,84 +90,6 @@ export class protectedComponent implements OnInit {
     
     console.log('Modelo completo antes de enviar:', this.confirmacionModel);
 
-
-    /*this.confirmacionModel.fechaRegistro = new Date();
-    this.confirmacionModel.correo = datos?.mail || '';
-    this.confirmacionModel.numEmpleado = datos?.employeeId || '';
-    this.confirmacionModel.nombreCompleto = `${this.appService.accountData()?.givenName || ''} ${this.appService.accountData()?.surname || ''}`.trim();/*
-    
-    
-    
-    
-  }
-
-  /*enviarFormulario(): void {
-    //2 jul
-    const payload ={
-      ...this.confirmacion,
-      invitadoAsiste:this.confirmacion.invitadoAsiste ?? false,
-      parejaAsiste:this.confirmacion.parejaAsiste ?? false,
-      alergiaAlimentaria:this.confirmacion.alergiaAlimentaria ?? false,
-      discapacidad:this.confirmacion.discapacidad ?? false,
-
-    };
-    this.confirmacionService.createConfirmacion(payload).subscribe({
-      next: (respuesta) => {
-        alert('Respuestas guardadas correctamente!');
-        console.log('Response',respuesta);
-      },
-      error: (error)=>{
-        console.error('Error:',error);
-        alert(`Error:${error.status}-${error.message}`);
-      }
-    });
-
-
-    //prueba 1 jul
-    /*if (!this.confirmacion.invitadoAsiste) {
-    this.confirmacion.parejaAsiste = false;
-    this.confirmacion.nombrePareja = 'N/A';
-  }
-
-  console.log('Enviando informacion:', this.confirmacion);
-
-
-    // Validaciones básicas antes de enviar
-    if (this.confirmacion.parejaAsiste === false) {
-      this.confirmacion.nombrePareja = 'N/A';}
-    
-    if (this.confirmacion.alergiaAlimentaria === false) {
-      this.confirmacion.alergiaEsp = 'N/A';}
-    
-    if (this.confirmacion.discapacidad === false) {
-      this.confirmacion.discapacidadEsp = 'N/A';}*/
-      //original
-    /*this.confirmacionService.createConfirmacion(this.confirmacion).subscribe({
-      next: (respuesta) => {
-        alert('¡Respuestas enviadas correctamente!');
-        console.log('Respuesta del servidor:', respuesta);
-      },
-      error: (error) => {
-        console.error('Error al enviar:', error);
-        alert('Ocurrio un error al enviar la información.'+error);
-        
-      }
-    });
-
-    //prueba 1 jul
-
-    this.confirmacionService.createConfirmacion(this.confirmacion).subscribe({
-    next: (respuesta) => {
-      alert('¡Respuestas enviadas correctamente!');
-      console.log('Full response:', respuesta); // Detailed logging
-      // Reset form after successful submission if needed
-    },
-    error: (error) => {
-      alert('Error: ' + (error.error?.message || error.message));
-      console.error('Error details:', error);
-    }
-  });
-  }*/
 }
 
 }

@@ -55,7 +55,6 @@ public class RespuestasSQL implements ImplRespuestasSQL{
     }
 
     @Override
-    //public String InsertListaConfirmacion (ConfirmacionDTO confirmacionDTO){
     public void InsertListaConfirmacion (ConfirmacionDTO confirmacionDTO){
         try {
             if (checkAuthorization("authorization")) {
@@ -94,28 +93,13 @@ public class RespuestasSQL implements ImplRespuestasSQL{
         }catch (Exception e) {
             log.error("Error al guardar la información. ", confirmacionDTO.getNumEmpleado(), e.getMessage(), e);
             throw new RuntimeException("Error en la operación: " + e.getMessage(), e);
-            //Error numEmpleado duplicado
-            // 30 jul: omitir
-            //String msg= e.getMessage();
-            // log.error("Error al guardar información: " + msg, e);
-
-            // if(msg.contains("Primary key ha sido registrada anteriormente")){
-            //     log.error("Numero de empleado duplicado");
-            //     return "Numero de empleado duplicado";
-            // }
-            // return "Error en la operación:" + msg;
-
-
-            // Error con inserListaConfirmacion  
-            //log.error("Error en la consulta insertListaConfirmacion: ", confirmacionDTO != null ? confirmacionDTO.getNumEmpleado() : "null", e);
-            // throw new RuntimeException("Error en consulta: " + e.getMessage());
         }
 
     };
     
     private boolean checkAuthorization(String userName) {
         return "authorization". equals(userName);
-        //return userName.equals("authorization");
+       
     }
 
     
