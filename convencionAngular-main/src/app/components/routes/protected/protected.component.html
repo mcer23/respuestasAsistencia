@@ -35,7 +35,7 @@
         </li> 
         <div *ngIf="confirmacionModel.alergiaAlimentaria===true">
             <p>Por favor especifíque su alergia:<br>
-            <input  type="text" class="txtBox--input" [(ngModel)]="confirmacionModel.alergiaEsp" name="alergiaEsp" placeholder="Tengo alergia a los mariscos."[(ngModel)]="confirmacionModel.alergiaEsp" required>
+            <input  type="text" class="txtBox--input" name="alergiaEsp" placeholder="Tengo alergia a los mariscos."[(ngModel)]="confirmacionModel.alergiaEsp" required>
             </p>
         </div>
         <li class="question-width">¿Tienes alguna necesidad especial relacionada con accesibilidad que debamos tener en cuenta?<br>

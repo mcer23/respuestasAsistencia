@@ -3,6 +3,8 @@ package com.coppel.consultaSQL.impl;
 import java.util.List;
 import java.util.Optional;
 
+import javax.management.RuntimeErrorException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,7 +13,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
-
+import org.springframework.dao.DataIntegrityViolationException;
 import com.coppel.consultaSQL.ImplRespuestasSQL;
 import com.coppel.dto.ConfirmacionDTO;
 import com.coppel.dto.RespuestasDTO;
@@ -47,13 +49,14 @@ public class RespuestasSQL implements ImplRespuestasSQL{
             }
             return Optional.empty();
         } catch (Exception e) {
-            log.error("Error en obtenerRespuesta. ",numEmpleado, e);
-            throw new RuntimeException("Error en consulta: " + e.getMessage());
+            log.error("Error en obtenerRespuesta. ",numEmpleado, e.getMessage(),e);
+            throw new RuntimeException("Error en consulta: " + e.getMessage(),e);
         }
     }
 
     @Override
-    public String InsertListaConfirmacion(ConfirmacionDTO confirmacionDTO){
+    //public String InsertListaConfirmacion (ConfirmacionDTO confirmacionDTO){
+    public void InsertListaConfirmacion (ConfirmacionDTO confirmacionDTO){
         try {
             if (checkAuthorization("authorization")) {
                 String sql = "{CALL SP_RESPUESTAS (?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?)}";
@@ -83,14 +86,33 @@ public class RespuestasSQL implements ImplRespuestasSQL{
                 // );
                 // return Optional.ofNullable(result.isEmpty() ? null : result);
             }
-            log.info("Respuesta registrada con exito.");
-        } catch (Exception e) {
-            log.error("Error en la consulta insertListaConfirmacion: ", confirmacionDTO != null ? confirmacionDTO.getNumEmpleado() : "null", e);
-            throw new RuntimeException("Error en consulta: " + e.getMessage());
-        }
-        return "Confirmacion guardada correctamente";
-    }
+            log.info("Respuesta registrada con éxito.", confirmacionDTO.getNumEmpleado());
+            
+        } catch (DataIntegrityViolationException e){
+            log.error("Primary Key duplicado", confirmacionDTO.getNumEmpleado(), e.getMessage(),e);
+            throw e;
+        }catch (Exception e) {
+            log.error("Error al guardar la información. ", confirmacionDTO.getNumEmpleado(), e.getMessage(), e);
+            throw new RuntimeException("Error en la operación: " + e.getMessage(), e);
+            //Error numEmpleado duplicado
+            // 30 jul: omitir
+            //String msg= e.getMessage();
+            // log.error("Error al guardar información: " + msg, e);
 
+            // if(msg.contains("Primary key ha sido registrada anteriormente")){
+            //     log.error("Numero de empleado duplicado");
+            //     return "Numero de empleado duplicado";
+            // }
+            // return "Error en la operación:" + msg;
+
+
+            // Error con inserListaConfirmacion  
+            //log.error("Error en la consulta insertListaConfirmacion: ", confirmacionDTO != null ? confirmacionDTO.getNumEmpleado() : "null", e);
+            // throw new RuntimeException("Error en consulta: " + e.getMessage());
+        }
+
+    };
+    
     private boolean checkAuthorization(String userName) {
         return "authorization". equals(userName);
         //return userName.equals("authorization");

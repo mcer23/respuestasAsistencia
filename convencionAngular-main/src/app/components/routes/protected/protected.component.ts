@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ConfirmacionService } from '../../../services/confirmacion.service';
@@ -6,6 +6,9 @@ import { Confirmacion } from '../../../interface/confirmacion/confirmacion.inter
 import { ConfirmacionV2} from '../../../services/confirmacionV2.service'; //prueba 2 jul
 import { AditionalUserData } from '../../../app.interfaces';
 import { AppService } from '../../../../app/services/app.service';
+import { MessageModule } from 'primeng/message';
+
+
 
 @Component({
   selector: 'app-protected',
@@ -41,7 +44,6 @@ export class protectedComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  
 
   enviarFormularioV2(){
     //Se guarda en la var declarada = se manda llamar lo que necesito de graph.service
@@ -65,12 +67,39 @@ export class protectedComponent implements OnInit {
     }
     //Enviar datos
     this.ConfirmacionV2Service.createConfirmacion(this.confirmacionModel).subscribe({
-      next:(res) => {
-        console.log('Envio de respuesta exitoso',res);
-        alert('Envio de respuesta exitoso' + res.toLocaleString());
+      
+      // Mensaje en caso de errores, modificado el agregado el 23 de jul.
+        next:(res: String) => {
+        console.log ('Respuesta del servidor:', res);
+
+        if (res.includes('Numero de empleado duplicado')){
+          alert ('Número de empleado ya fue registrado anteriormente. Comuníquese con el equipo de convenciones.');
+        } else if(res.includes('Error')){
+          alert('Ocurrió un error al guardar la información. Comuníquese con el equipo de convenciones.')
+        } else{
+          alert('Envió de respuestas exitoso: '+res);
+        }
+        
       },
-      error: (err) => console.error('error en el envio de respuesta:',err)
-    });
+      error: (error)=>{
+        console.error('Error:',error);
+        alert(`Error 500: Usuario registrado anteriormente, comuniquese con el área de convenciones.`);
+      }
+      //* Enviar datos sin errores ORIGINAL CON ESTE SI FUNCIONA
+      // next:(res) => {
+      //   console.log('Envio de respuesta exitoso',res);
+      //   alert('Envio de respuesta exitoso' + res.toLocaleString());
+      // },
+      // error: (err) => console.error('error en el envio de respuesta:',err)
+
+      //agregado el 23 de jul.
+      
+
+    });  
+      
+    
+    console.log('Modelo completo antes de enviar:', this.confirmacionModel);
+
 
     /*this.confirmacionModel.fechaRegistro = new Date();
     this.confirmacionModel.correo = datos?.mail || '';
@@ -150,4 +179,5 @@ export class protectedComponent implements OnInit {
   });
   }*/
 }
+
 }
