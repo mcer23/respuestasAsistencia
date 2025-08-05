@@ -3,7 +3,6 @@ package com.coppel.consultaSQL.impl;
 import java.util.List;
 import java.util.Optional;
 
-import javax.management.RuntimeErrorException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,22 +22,19 @@ public class RespuestasSQL implements ImplRespuestasSQL{
 
     private static final Logger log = LoggerFactory.getLogger(RespuestasSQL.class);
 
-    // private final ConfirmacionController confirmacionController;
+
     @Autowired
-    @Qualifier("sqlServerRes") // Este nombre debe coincidir con el del Bean: el bean de SqlServerConfig es sqlServerRespuestasDataSource
+    @Qualifier("sqlServerRes")
     private JdbcTemplate jdbcSqlServer;
 
-    /* private static Logger log = LoggerFactory.getLogger(RespuestasSQL.class);
-    RespuestasSQL(ConfirmacionController confirmacionController) {
-        this.confirmacionController = confirmacionController;
-    } */
+ 
 
     @Override
     public Optional<List <RespuestasDTO>> obtenerRespuestas (String numEmpleado, String nombreCompleto, Boolean invitadoAsiste) {
         try {
             if (checkAuthorization("authorization")) {
                 String sql = "{CALL SP_ObtenerRespuestas (?)}";
-                // String sql = "SELECT * FROM respuestas WHERE numEmpleado = ?";
+             
                 List<RespuestasDTO> result = jdbcSqlServer.query(
                         sql,
                         new BeanPropertyRowMapper<>(RespuestasDTO.class),
@@ -59,10 +55,7 @@ public class RespuestasSQL implements ImplRespuestasSQL{
         try {
             if (checkAuthorization("authorization")) {
                 String sql = "{CALL SP_RESPUESTAS (?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?)}";
-                // String sql = "INSERT INTO respuestasAsistencia.dbo.respuestas" +
-                // "( numEmpleado, nombreCompleto, invitadoAsiste, parejaAsiste, nombrePareja, alergiaAlimentaria, discapacidad, alergiaEsp, discapacidadEsp, comentarios, fechaRegistro,correo)" + 
-                // "VALUES(?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?,?);";
-                 //Tiene que estar en el mismo orden el INSERT INTO y el UPDATE                      
+                                 
                 jdbcSqlServer.update(
                 sql,
                 confirmacionDTO.getNumEmpleado(),
@@ -78,12 +71,7 @@ public class RespuestasSQL implements ImplRespuestasSQL{
                 confirmacionDTO.getFechaRegistro(),
                 confirmacionDTO.getCorreo()
             );                        
-                // List<RespuestasDTO> result = jdbcSqlServer.query(
-                //         consulta,
-                //         BeanPropertyRowMapper.newInstance(RespuestasDTO.class),
-                //         confirmacionDTO.getNumEmpleado(), confirmacionDTO.getNombreCompleto(), confirmacionDTO.getInvitadoAsiste(), confirmacionDTO.getParejaAsiste(), confirmacionDTO.getNombrePareja(), confirmacionDTO.getAlergiaAlimentaria(), confirmacionDTO.getDiscapacidad(), confirmacionDTO.getAlergiaEsp(), confirmacionDTO.getDiscapacidadEsp(), confirmacionDTO.getComentarios(), confirmacionDTO.getCorreo()
-                // );
-                // return Optional.ofNullable(result.isEmpty() ? null : result);
+               
             }
             log.info("Respuesta registrada con éxito.", confirmacionDTO.getNumEmpleado());
             
