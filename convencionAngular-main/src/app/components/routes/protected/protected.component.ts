@@ -7,6 +7,7 @@ import { ConfirmacionV2} from '../../../services/confirmacionV2.service'; //prue
 import { AditionalUserData } from '../../../app.interfaces';
 import { AppService } from '../../../../app/services/app.service';
 import { MessageModule } from 'primeng/message';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 
 
@@ -39,6 +40,7 @@ export class protectedComponent implements OnInit {
   constructor(
     private ConfirmacionV2Service: ConfirmacionV2,
     private appService: AppService,
+
 
   ){}
 
@@ -75,7 +77,7 @@ export class protectedComponent implements OnInit {
         } else if(res.includes('Error')){
           alert('Ocurrió un error al guardar la información. Comuníquese con el equipo de convenciones.')
         } else{
-          alert('Envió de respuestas exitoso: '+res);
+          alert('Respuestas registradas correctamente.');
         }
         
       },

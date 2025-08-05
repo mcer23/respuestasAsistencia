@@ -4,6 +4,9 @@ import express from 'express';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import bootstrap from './src/main.server';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
+
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -20,14 +23,33 @@ export function app(): express.Express {
   // Example Express Rest API endpoints
   // server.get('/api/**', (req, res) => { });
   // Serve static files from /browser
+  server.use (helmet({
+    contentSecurityPolicy:{
+      directives:{
+        defaultSrc:["'self'"],
+        scriptSrc:["'self'","'unsafe-inline'"],
+        styleSrc:["'self'","'unsafe-inline'"],
+      },
+    },
+  }));
+  const limiter = rateLimit({
+    windowMs: 15+60+1000,
+    max:100,
+    message: "Haz llegado al limite de solicited, intentalo de nuevo en 15 minutos"
+  });
   server.get('**', express.static(browserDistFolder, {
     maxAge: '1y',
-    index: 'index.html',
+    // index: 'index.html',
+    index:false,
   }));
 
   // All regular routes use the Angular engine
   server.get('**', (req, res, next) => {
     const { protocol, originalUrl, baseUrl, headers } = req;
+
+    if(originalUrl.includes('..')|| originalUrl.includes('%2e%2e')){
+      return res.status(400).send('Bad request');
+    }
 
     commonEngine
       .render({
@@ -43,7 +65,7 @@ export function app(): express.Express {
 
   return server;
 }
-
+//Inicia el server
 function run(): void {
   const port = process.env['PORT'] || 4000;
 
