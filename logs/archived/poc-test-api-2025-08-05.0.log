@@ -1,0 +1,281 @@
+[INFO ] 2025-08-05 16:54:51.259 [background-preinit] o.h.v.i.u.Version - HV000001: Hibernate Validator 8.0.2.Final
+[INFO ] 2025-08-05 16:54:51.360 [main] c.c.MainApplication - Starting MainApplication using Java 21.0.7 with PID 1687 (/Users/mcer23/Documents/github/respuestasAsistencia/poc-test-api/target/classes started by mcer23 in /Users/mcer23/Documents/github/respuestasAsistencia)
+[DEBUG] 2025-08-05 16:54:51.361 [main] c.c.MainApplication - Running with Spring Boot v3.4.5, Spring v6.2.6
+[INFO ] 2025-08-05 16:54:51.362 [main] c.c.MainApplication - No active profile set, falling back to 1 default profile: "default"
+[INFO ] 2025-08-05 16:54:52.661 [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[INFO ] 2025-08-05 16:54:52.696 [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 24 ms. Found 0 JPA repository interfaces.
+[INFO ] 2025-08-05 16:54:53.711 [main] o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8080 (http)
+[INFO ] 2025-08-05 16:54:53.736 [main] o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2025-08-05 16:54:53.738 [main] o.a.c.c.StandardService - Starting service [Tomcat]
+[INFO ] 2025-08-05 16:54:53.739 [main] o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.40]
+[INFO ] 2025-08-05 16:54:53.796 [main] o.a.c.c.C.[.[.[/api/v1] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2025-08-05 16:54:53.797 [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2380 ms
+[INFO ] 2025-08-05 16:54:54.335 [main] o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[INFO ] 2025-08-05 16:54:54.400 [main] o.h.Version - HHH000412: Hibernate ORM core version 6.1.7.Final
+[INFO ] 2025-08-05 16:54:54.684 [main] c.z.h.HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2025-08-05 16:54:55.863 [main] c.z.h.p.HikariPool - HikariPool-1 - Added connection ConnectionID:1 ClientConnectionId: b6ba6245-e5eb-448f-a1fb-e4fd92d80dbb
+[INFO ] 2025-08-05 16:54:55.866 [main] c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2025-08-05 16:54:55.891 [main] SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+[INFO ] 2025-08-05 16:54:56.664 [main] o.h.m.i.EntityInstantiatorPojoStandard - HHH000182: No default (no-argument) constructor for class: com.coppel.models.RespuestasAsistencia (class must be instantiated by Interceptor)
+[WARN ] 2025-08-05 16:54:57.794 [main] o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "create table respuestas_asistencia (fecha_registro date not null, alergia_alimentaria boolean, alergia_esp varchar(255), comentarios varchar(255), discapacidad boolean, discapacidad_esp varchar(255), invitado_asiste boolean, nombre_completo varchar(255), nombre_pareja varchar(255), num_empleado varchar(255), pareja_asiste boolean, primary key (fecha_registro))" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "create table respuestas_asistencia (fecha_registro date not null, alergia_alimentaria boolean, alergia_esp varchar(255), comentarios varchar(255), discapacidad boolean, discapacidad_esp varchar(255), invitado_asiste boolean, nombre_completo varchar(255), nombre_pareja varchar(255), num_empleado varchar(255), pareja_asiste boolean, primary key (fecha_registro))" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:587)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:532)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.createTable(AbstractSchemaMigrator.java:307)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:79)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:225)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:126)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:284)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:143)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:140)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:336)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:415)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1423)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:419)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:400)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1865)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1814)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:970)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:753)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1362)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1351)
+	at com.coppel.MainApplication.main(MainApplication.java:17)
+Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Column, parameter, or variable #2: Cannot find data type boolean.
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:270)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.getNextResult(SQLServerStatement.java:1735)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.doExecuteStatement(SQLServerStatement.java:929)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement$StmtExecCmd.doExecute(SQLServerStatement.java:823)
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:7745)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:4391)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeCommand(SQLServerStatement.java:276)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeStatement(SQLServerStatement.java:246)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.execute(SQLServerStatement.java:796)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 35 common frames omitted
+[INFO ] 2025-08-05 16:54:57.797 [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2025-08-05 16:54:57.806 [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[WARN ] 2025-08-05 16:54:58.054 [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[INFO ] 2025-08-05 16:54:59.079 [main] o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:sqlserver://51.79.72.212:1433;connectRetryInterval=10;connectRetryCount=1;maxResultBuffer=-1;sendTemporalDataTypesAsStringForBulkCopy=true;delayLoadingLobs=true;useFmtOnly=false;cacheBulkCopyMetadata=false;useBulkCopyForBatchInsert=false;cancelQueryTimeout=-1;sslProtocol=TLS;calcBigDecimalPrecision=false;useDefaultJaasConfig=false;jaasConfigurationName=SQLJDBCDriver;statementPoolingCacheSize=0;serverPreparedStatementDiscardThreshold=10;enablePrepareOnFirstPreparedStatementCall=false;fips=false;socketTimeout=0;authentication=NotSpecified;authenticationScheme=nativeAuthentication;xopenStates=false;datetimeParameterType=datetime2;sendTimeAsDatetime=true;replication=false;trustStoreType=JKS;trustServerCertificate=true;TransparentNetworkIPResolution=true;iPAddressPreference=IPv4First;serverNameAsACE=false;sendStringParametersAsUnicode=true;selectMethod=direct;responseBuffering=adaptive;queryTimeout=-1;packetSize=8000;multiSubnetFailover=false;loginTimeout=30;lockTimeout=-1;lastUpdateCount=true;useDefaultGSSCredential=false;prepareMethod=prepexec;encrypt=true;disableStatementPooling=true;databaseName=respuestasAsistencia;columnEncryptionSetting=Disabled;applicationName=Microsoft JDBC Driver for SQL Server;applicationIntent=readwrite;'
+[INFO ] 2025-08-05 16:54:59.110 [main] o.s.b.a.e.w.EndpointLinksResolver - Exposing 2 endpoints beneath base path '/actuator'
+[INFO ] 2025-08-05 16:54:59.188 [main] o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2025-08-05 16:54:59.205 [main] o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/api/v1'
+[INFO ] 2025-08-05 16:54:59.222 [main] c.c.MainApplication - Started MainApplication in 8.343 seconds (process running for 10.233)
+[INFO ] 2025-08-05 16:54:59.914 [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[.[.[/api/v1] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 2025-08-05 16:54:59.915 [RMI TCP Connection(2)-127.0.0.1] o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 2025-08-05 16:54:59.916 [RMI TCP Connection(2)-127.0.0.1] o.s.w.s.DispatcherServlet - Completed initialization in 1 ms
+[INFO ] 2025-08-05 17:51:58.460 [background-preinit] o.h.v.i.u.Version - HV000001: Hibernate Validator 8.0.2.Final
+[INFO ] 2025-08-05 17:51:58.522 [main] c.c.MainApplication - Starting MainApplication using Java 21.0.7 with PID 17379 (/Users/mcer23/Documents/github/respuestasAsistencia/poc-test-api/target/classes started by mcer23 in /Users/mcer23/Documents/github/respuestasAsistencia)
+[DEBUG] 2025-08-05 17:51:58.523 [main] c.c.MainApplication - Running with Spring Boot v3.4.5, Spring v6.2.6
+[INFO ] 2025-08-05 17:51:58.524 [main] c.c.MainApplication - No active profile set, falling back to 1 default profile: "default"
+[INFO ] 2025-08-05 17:51:59.695 [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[INFO ] 2025-08-05 17:51:59.728 [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 21 ms. Found 0 JPA repository interfaces.
+[INFO ] 2025-08-05 17:52:00.755 [main] o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8080 (http)
+[INFO ] 2025-08-05 17:52:00.772 [main] o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2025-08-05 17:52:00.776 [main] o.a.c.c.StandardService - Starting service [Tomcat]
+[INFO ] 2025-08-05 17:52:00.777 [main] o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.40]
+[INFO ] 2025-08-05 17:52:00.853 [main] o.a.c.c.C.[.[.[/api/v1] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2025-08-05 17:52:00.854 [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2289 ms
+[INFO ] 2025-08-05 17:52:01.443 [main] o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[INFO ] 2025-08-05 17:52:01.516 [main] o.h.Version - HHH000412: Hibernate ORM core version 6.1.7.Final
+[INFO ] 2025-08-05 17:52:01.836 [main] c.z.h.HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2025-08-05 17:52:02.907 [main] c.z.h.p.HikariPool - HikariPool-1 - Added connection ConnectionID:1 ClientConnectionId: cff7374b-2bb8-43a4-b86d-bd8a731a84c8
+[INFO ] 2025-08-05 17:52:02.910 [main] c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2025-08-05 17:52:02.936 [main] SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+[INFO ] 2025-08-05 17:52:03.636 [main] o.h.m.i.EntityInstantiatorPojoStandard - HHH000182: No default (no-argument) constructor for class: com.coppel.models.RespuestasAsistencia (class must be instantiated by Interceptor)
+[WARN ] 2025-08-05 17:52:04.646 [main] o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "create table respuestas_asistencia (fecha_registro date not null, alergia_alimentaria boolean, alergia_esp varchar(255), comentarios varchar(255), discapacidad boolean, discapacidad_esp varchar(255), invitado_asiste boolean, nombre_completo varchar(255), nombre_pareja varchar(255), num_empleado varchar(255), pareja_asiste boolean, primary key (fecha_registro))" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "create table respuestas_asistencia (fecha_registro date not null, alergia_alimentaria boolean, alergia_esp varchar(255), comentarios varchar(255), discapacidad boolean, discapacidad_esp varchar(255), invitado_asiste boolean, nombre_completo varchar(255), nombre_pareja varchar(255), num_empleado varchar(255), pareja_asiste boolean, primary key (fecha_registro))" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:587)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:532)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.createTable(AbstractSchemaMigrator.java:307)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:79)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:225)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:126)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:284)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:143)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:140)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:336)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:415)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1423)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:419)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:400)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1865)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1814)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:970)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:753)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1362)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1351)
+	at com.coppel.MainApplication.main(MainApplication.java:17)
+Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Column, parameter, or variable #2: Cannot find data type boolean.
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:270)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.getNextResult(SQLServerStatement.java:1735)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.doExecuteStatement(SQLServerStatement.java:929)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement$StmtExecCmd.doExecute(SQLServerStatement.java:823)
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:7745)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:4391)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeCommand(SQLServerStatement.java:276)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeStatement(SQLServerStatement.java:246)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.execute(SQLServerStatement.java:796)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 35 common frames omitted
+[INFO ] 2025-08-05 17:52:04.649 [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2025-08-05 17:52:04.657 [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[WARN ] 2025-08-05 17:52:04.977 [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[INFO ] 2025-08-05 17:52:06.340 [main] o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:sqlserver://51.79.72.212:1433;connectRetryInterval=10;connectRetryCount=1;maxResultBuffer=-1;sendTemporalDataTypesAsStringForBulkCopy=true;delayLoadingLobs=true;useFmtOnly=false;cacheBulkCopyMetadata=false;useBulkCopyForBatchInsert=false;cancelQueryTimeout=-1;sslProtocol=TLS;calcBigDecimalPrecision=false;useDefaultJaasConfig=false;jaasConfigurationName=SQLJDBCDriver;statementPoolingCacheSize=0;serverPreparedStatementDiscardThreshold=10;enablePrepareOnFirstPreparedStatementCall=false;fips=false;socketTimeout=0;authentication=NotSpecified;authenticationScheme=nativeAuthentication;xopenStates=false;datetimeParameterType=datetime2;sendTimeAsDatetime=true;replication=false;trustStoreType=JKS;trustServerCertificate=true;TransparentNetworkIPResolution=true;iPAddressPreference=IPv4First;serverNameAsACE=false;sendStringParametersAsUnicode=true;selectMethod=direct;responseBuffering=adaptive;queryTimeout=-1;packetSize=8000;multiSubnetFailover=false;loginTimeout=30;lockTimeout=-1;lastUpdateCount=true;useDefaultGSSCredential=false;prepareMethod=prepexec;encrypt=true;disableStatementPooling=true;databaseName=respuestasAsistencia;columnEncryptionSetting=Disabled;applicationName=Microsoft JDBC Driver for SQL Server;applicationIntent=readwrite;'
+[INFO ] 2025-08-05 17:52:06.373 [main] o.s.b.a.e.w.EndpointLinksResolver - Exposing 2 endpoints beneath base path '/actuator'
+[INFO ] 2025-08-05 17:52:06.472 [main] o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2025-08-05 17:52:06.486 [main] o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/api/v1'
+[INFO ] 2025-08-05 17:52:06.507 [main] c.c.MainApplication - Started MainApplication in 8.393 seconds (process running for 9.551)
+[INFO ] 2025-08-05 17:52:07.136 [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[.[.[/api/v1] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 2025-08-05 17:52:07.136 [RMI TCP Connection(2)-127.0.0.1] o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 2025-08-05 17:52:07.137 [RMI TCP Connection(2)-127.0.0.1] o.s.w.s.DispatcherServlet - Completed initialization in 1 ms
+[INFO ] 2025-08-05 17:55:27.022 [http-nio-8080-exec-6] c.c.c.i.RespuestasSQL - Respuesta registrada con éxito.
+[INFO ] 2025-08-05 18:03:57.416 [background-preinit] o.h.v.i.u.Version - HV000001: Hibernate Validator 8.0.2.Final
+[INFO ] 2025-08-05 18:03:57.491 [main] c.c.MainApplication - Starting MainApplication using Java 21.0.7 with PID 20558 (/Users/mcer23/Documents/github/respuestasAsistencia/poc-test-api/target/classes started by mcer23 in /Users/mcer23/Documents/github/respuestasAsistencia)
+[DEBUG] 2025-08-05 18:03:57.491 [main] c.c.MainApplication - Running with Spring Boot v3.4.5, Spring v6.2.6
+[INFO ] 2025-08-05 18:03:57.492 [main] c.c.MainApplication - No active profile set, falling back to 1 default profile: "default"
+[INFO ] 2025-08-05 18:03:58.604 [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[INFO ] 2025-08-05 18:03:58.633 [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 18 ms. Found 0 JPA repository interfaces.
+[INFO ] 2025-08-05 18:03:59.412 [main] o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8080 (http)
+[INFO ] 2025-08-05 18:03:59.424 [main] o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2025-08-05 18:03:59.426 [main] o.a.c.c.StandardService - Starting service [Tomcat]
+[INFO ] 2025-08-05 18:03:59.426 [main] o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.40]
+[INFO ] 2025-08-05 18:03:59.474 [main] o.a.c.c.C.[.[.[/api/v1] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2025-08-05 18:03:59.475 [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1936 ms
+[INFO ] 2025-08-05 18:03:59.910 [main] o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[INFO ] 2025-08-05 18:03:59.957 [main] o.h.Version - HHH000412: Hibernate ORM core version 6.1.7.Final
+[INFO ] 2025-08-05 18:04:00.223 [main] c.z.h.HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2025-08-05 18:04:01.226 [main] c.z.h.p.HikariPool - HikariPool-1 - Added connection ConnectionID:1 ClientConnectionId: 9f1d5533-dfcf-4ffa-b2ee-0806d9360a76
+[INFO ] 2025-08-05 18:04:01.228 [main] c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2025-08-05 18:04:01.252 [main] SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+[INFO ] 2025-08-05 18:04:02.015 [main] o.h.m.i.EntityInstantiatorPojoStandard - HHH000182: No default (no-argument) constructor for class: com.coppel.models.RespuestasAsistencia (class must be instantiated by Interceptor)
+[WARN ] 2025-08-05 18:04:03.061 [main] o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "create table respuestas_asistencia (fecha_registro date not null, alergia_alimentaria boolean, alergia_esp varchar(255), comentarios varchar(255), discapacidad boolean, discapacidad_esp varchar(255), invitado_asiste boolean, nombre_completo varchar(255), nombre_pareja varchar(255), num_empleado varchar(255), pareja_asiste boolean, primary key (fecha_registro))" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "create table respuestas_asistencia (fecha_registro date not null, alergia_alimentaria boolean, alergia_esp varchar(255), comentarios varchar(255), discapacidad boolean, discapacidad_esp varchar(255), invitado_asiste boolean, nombre_completo varchar(255), nombre_pareja varchar(255), num_empleado varchar(255), pareja_asiste boolean, primary key (fecha_registro))" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:587)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:532)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.createTable(AbstractSchemaMigrator.java:307)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:79)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:225)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:126)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:284)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:143)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:140)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:336)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:415)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1423)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:419)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:400)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1865)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1814)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:970)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:753)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1362)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1351)
+	at com.coppel.MainApplication.main(MainApplication.java:17)
+Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Column, parameter, or variable #2: Cannot find data type boolean.
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:270)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.getNextResult(SQLServerStatement.java:1735)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.doExecuteStatement(SQLServerStatement.java:929)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement$StmtExecCmd.doExecute(SQLServerStatement.java:823)
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:7745)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:4391)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeCommand(SQLServerStatement.java:276)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeStatement(SQLServerStatement.java:246)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.execute(SQLServerStatement.java:796)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 35 common frames omitted
+[INFO ] 2025-08-05 18:04:03.063 [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2025-08-05 18:04:03.072 [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[WARN ] 2025-08-05 18:04:03.289 [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[INFO ] 2025-08-05 18:04:04.260 [main] o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:sqlserver://51.79.72.212:1433;connectRetryInterval=10;connectRetryCount=1;maxResultBuffer=-1;sendTemporalDataTypesAsStringForBulkCopy=true;delayLoadingLobs=true;useFmtOnly=false;cacheBulkCopyMetadata=false;useBulkCopyForBatchInsert=false;cancelQueryTimeout=-1;sslProtocol=TLS;calcBigDecimalPrecision=false;useDefaultJaasConfig=false;jaasConfigurationName=SQLJDBCDriver;statementPoolingCacheSize=0;serverPreparedStatementDiscardThreshold=10;enablePrepareOnFirstPreparedStatementCall=false;fips=false;socketTimeout=0;authentication=NotSpecified;authenticationScheme=nativeAuthentication;xopenStates=false;datetimeParameterType=datetime2;sendTimeAsDatetime=true;replication=false;trustStoreType=JKS;trustServerCertificate=true;TransparentNetworkIPResolution=true;iPAddressPreference=IPv4First;serverNameAsACE=false;sendStringParametersAsUnicode=true;selectMethod=direct;responseBuffering=adaptive;queryTimeout=-1;packetSize=8000;multiSubnetFailover=false;loginTimeout=30;lockTimeout=-1;lastUpdateCount=true;useDefaultGSSCredential=false;prepareMethod=prepexec;encrypt=true;disableStatementPooling=true;databaseName=respuestasAsistencia;columnEncryptionSetting=Disabled;applicationName=Microsoft JDBC Driver for SQL Server;applicationIntent=readwrite;'
+[INFO ] 2025-08-05 18:04:04.270 [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[.[.[/api/v1] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 2025-08-05 18:04:04.271 [RMI TCP Connection(2)-127.0.0.1] o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 2025-08-05 18:04:04.271 [RMI TCP Connection(2)-127.0.0.1] o.s.b.f.s.DefaultListableBeanFactory - Obtaining singleton bean 'multipartResolver' in thread "RMI TCP Connection(2)-127.0.0.1" while other thread holds singleton lock for other beans [jdbcClient]
+[INFO ] 2025-08-05 18:04:04.274 [RMI TCP Connection(2)-127.0.0.1] o.s.b.f.s.DefaultListableBeanFactory - Obtaining singleton bean 'webEndpointServletHandlerMapping' in thread "RMI TCP Connection(2)-127.0.0.1" while other thread holds singleton lock for other beans [org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$JdbcTransactionManagerConfiguration]
+[INFO ] 2025-08-05 18:04:04.274 [RMI TCP Connection(2)-127.0.0.1] o.s.b.f.s.DefaultListableBeanFactory - Obtaining singleton bean 'org.springframework.boot.actuate.autoconfigure.endpoint.web.servlet.WebMvcEndpointManagementContextConfiguration' in thread "RMI TCP Connection(2)-127.0.0.1" while other thread holds singleton lock for other beans [org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$JdbcTransactionManagerConfiguration, webEndpointServletHandlerMapping]
+[INFO ] 2025-08-05 18:04:04.277 [RMI TCP Connection(2)-127.0.0.1] o.s.b.f.s.DefaultListableBeanFactory - Obtaining singleton bean 'management.endpoints.web.cors-org.springframework.boot.actuate.autoconfigure.endpoint.web.CorsEndpointProperties' in thread "RMI TCP Connection(2)-127.0.0.1" while other thread holds singleton lock for other beans [org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration$TransactionTemplateConfiguration, webEndpointServletHandlerMapping]
+[INFO ] 2025-08-05 18:04:04.285 [RMI TCP Connection(2)-127.0.0.1] o.s.b.a.e.w.EndpointLinksResolver - Exposing 2 endpoints beneath base path '/actuator'
+[INFO ] 2025-08-05 18:04:04.295 [RMI TCP Connection(2)-127.0.0.1] o.s.b.f.s.DefaultListableBeanFactory - Obtaining singleton bean 'controllerEndpointHandlerMapping' in thread "RMI TCP Connection(2)-127.0.0.1" while other thread holds singleton lock for other beans []
+[INFO ] 2025-08-05 18:04:04.304 [RMI TCP Connection(2)-127.0.0.1] o.s.w.s.DispatcherServlet - Completed initialization in 33 ms
+[INFO ] 2025-08-05 18:04:04.383 [main] o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2025-08-05 18:04:04.400 [main] o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/api/v1'
+[INFO ] 2025-08-05 18:04:04.405 [main] c.c.MainApplication - Started MainApplication in 7.572 seconds (process running for 10.477)
+[WARN ] 2025-08-05 18:18:43.593 [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m42s110ms).
+[WARN ] 2025-08-05 18:29:00.110 [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=10m16s590ms).
+[WARN ] 2025-08-05 18:45:18.094 [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=16m17s985ms).
+[WARN ] 2025-08-05 18:46:35.337 [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m17s243ms).
+[WARN ] 2025-08-05 20:15:58.718 [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h29m23s381ms).
+[WARN ] 2025-08-05 20:17:16.082 [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m17s364ms).
+[WARN ] 2025-08-05 20:33:10.411 [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=15m54s328ms).
+[WARN ] 2025-08-05 20:34:20.915 [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m10s504ms).
+[WARN ] 2025-08-05 20:36:10.641 [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m49s727ms).
+[WARN ] 2025-08-05 20:52:04.890 [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=15m54s249ms).
+[WARN ] 2025-08-05 20:53:45.762 [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m40s872ms).
+[WARN ] 2025-08-05 21:09:40.071 [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=15m54s309ms).
+[WARN ] 2025-08-05 21:10:57.328 [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m17s257ms).
+[WARN ] 2025-08-05 21:12:14.575 [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m17s247ms).
+[WARN ] 2025-08-05 21:21:43.197 [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=9m28s622ms).
+[WARN ] 2025-08-05 21:38:24.657 [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=16m41s460ms).
+[WARN ] 2025-08-05 21:40:39.550 [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m14s893ms).
+[WARN ] 2025-08-05 22:22:44.417 [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=42m4s867ms).
+[WARN ] 2025-08-05 22:24:25.281 [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m40s864ms).
+[WARN ] 2025-08-05 22:40:19.694 [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=15m54s413ms).
+[WARN ] 2025-08-05 22:41:38.210 [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m18s516ms).
+[WARN ] 2025-08-05 22:42:55.457 [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m17s246ms).
+[WARN ] 2025-08-05 22:59:37.673 [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=16m42s217ms).
+[WARN ] 2025-08-05 23:00:31.655 [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=53s982ms).
+[WARN ] 2025-08-05 23:16:49.591 [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=16m17s936ms).
+[WARN ] 2025-08-05 23:18:40.344 [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m50s753ms).
+[WARN ] 2025-08-05 23:34:49.470 [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=16m9s121ms).
+[WARN ] 2025-08-05 23:36:07.105 [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m17s640ms).
+[WARN ] 2025-08-05 23:52:25.348 [HikariPool-1 housekeeper] c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=16m18s243ms).
