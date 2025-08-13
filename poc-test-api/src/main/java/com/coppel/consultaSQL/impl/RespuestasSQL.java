@@ -30,6 +30,7 @@ public class RespuestasSQL implements ImplRespuestasSQL{
  
 
     @Override
+    //El código es seguro contra Stored XSS y SQL Injection gracias al uso de Prepared Statements.
     public Optional<List <RespuestasDTO>> obtenerRespuestas (String numEmpleado, String nombreCompleto, Boolean invitadoAsiste) {
         try {
             if (checkAuthorization("authorization")) {

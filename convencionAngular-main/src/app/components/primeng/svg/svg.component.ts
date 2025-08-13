@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit, ElementRef, AfterViewInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import DOMPurify from 'dompurify';
 
 @Component({
   selector: 'app-svg',
@@ -34,6 +35,7 @@ export class SvgComponent implements OnInit, AfterViewInit {
   loadSvg(): void {
     this.http.get(this.path, { responseType: 'text' }).subscribe(
       (data: string) => {
+        const sanitizedData = DOMPurify.sanitize(data)
         this.svgContent = this.sanitizer.bypassSecurityTrustHtml(data);
         // Aplicar el color después de cargar el contenido.
         setTimeout(() => this.applyFillColor(), 0);

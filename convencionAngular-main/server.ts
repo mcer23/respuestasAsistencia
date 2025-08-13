@@ -6,6 +6,8 @@ import { dirname, join, resolve } from 'node:path';
 import bootstrap from './src/main.server';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
+import { Request, Response, NextFunction } from 'express';
+
 
 
 
@@ -41,24 +43,29 @@ export function app(): express.Express {
   }));
 
   // All regular routes use the Angular engine
-  server.get('**', (req, res, next) => {
-    const { protocol, originalUrl, baseUrl, headers } = req;
+  // server.get('**', (req, res, next) => {
+server.get('**', (req: Request, res: Response, next: NextFunction) => {
+  const { protocol, baseUrl, headers } = req;
 
-    if(originalUrl.includes('..')|| originalUrl.includes('%2e%2e')){
-      return res.status(400).send('Bad request');
-    }
+  if (req.originalUrl.includes('..') || req.originalUrl.includes('%2e%2e')) {
+    return res.status(400).send('Bad request');
+  }
 
-    return commonEngine
-      .render({
-        bootstrap,
-        documentFilePath: indexHtml,
-        url: `${protocol}://${headers.host}${originalUrl}`,
-        publicPath: browserDistFolder,
-        providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
-      })
-      .then((html) => res.send(html))
-      .catch((err) => next(err));
-  });
+
+  // `baseUrl` es la parte de la URL que concuerda con la ruta de la aplicación,
+  const secureUrl = `${protocol}://${headers.host}${baseUrl}`;
+
+  return commonEngine
+    .render({
+      bootstrap,
+      documentFilePath: indexHtml,
+      url: secureUrl,
+      publicPath: browserDistFolder,
+      providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
+    })
+    .then((html) => res.send(html))
+    .catch((err) => next(err));
+});
 
   return server;
 }
